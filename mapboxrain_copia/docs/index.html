@@ -7,8 +7,8 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'GTM-MTHZJTG');
-        
     </script>
+    
     <meta charset="utf-8">
     <title>GeoMapa Saludable</title>
     <meta name="description" content="GeoMapa saludable de Ermua - by Metabertsoa"/>
@@ -44,15 +44,6 @@
     <script src=https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.js></script>
     <link rel="stylesheet" href=https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.css type="text/css" /> 
 
-<!--  
-<link rel="stylesheet" type="text/css" href="mapbox-gl-directions-master/src/mapbox-gl-directions.css">
-<link rel="stylesheet" type="text/css" href="mapa_directions.css"> 
-<script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
-<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
-<script type="text/javascript" src="mapbox-gl-directions-master/dist/mapbox-gl-directions.js"></script>
-<script type="text/javascript" src='mapa_directions.js'></script>   -->
        
 </head>
 <body>
@@ -114,13 +105,12 @@
     
     
     <style>
-    img {
-            width: 70%;
-        }
+        img {
+                width: 70%;
+            }
     </style>
     
     <script>
-        
         class MapboxGLButtonControl {
             constructor(optionArray) {
                 this._options = optionArray.map(options => ({
@@ -163,7 +153,6 @@
 
             onRemove() {
                 const me = this;
-
                 me._container.parentNode.removeChild(me._container);
                 me._map = undefined;
             }
@@ -202,15 +191,18 @@
             hash: true,
             language: 'es'
         });
-        
-        
-        
-       
+          
        var popup = new mapboxgl.Popup({
-       closeButton: false,
-       closeOnClick: false
-   });
-
+            closeButton: false,
+            closeOnClick: false
+        });
+        
+        
+        
+        
+        
+        
+        
 map.on('click', 'building', function (e) {
         var description = e.features[0].properties.height;
         var centerPoint = turf.centerOfMass(e.features[0]);
@@ -347,8 +339,7 @@ map.on('click', 'building', function (e) {
         }
       },     
                  
-                 
-                 
+             
                  {
         type: 'Feature',
         "geometry": { "type": "Point", "coordinates": [-2.5016977462825416, 43.18674612354198] },
@@ -367,6 +358,13 @@ map.on('click', 'building', function (e) {
       }]
     };
 
+        
+        
+        
+        
+        
+        
+        
     map.on('load', function () {
       geojsonFeatures.features.forEach(function (marker) {
 
@@ -526,6 +524,8 @@ map.on('click', 'building', function (e) {
         
         
         
+        
+     
         
         
         
@@ -688,23 +688,7 @@ map.on('click', 'building', function (e) {
             
             
             
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
+             
             
             
             
