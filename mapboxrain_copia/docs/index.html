@@ -465,7 +465,7 @@ map.on('click', 'building', function (e) {
         $(document).ready(function () {
       $.ajax({
         type: "GET",
-        url: 'https://docs.google.com/spreadsheets/d/15FVh490FkzcxpM9eeiZfYn1Z5O-taXiO92MikKq0OXg/edit?usp=sharing',
+        url: 'https://docs.google.com/spreadsheets/u/0/d/1y2hdtxk8f14T5g5DfNoYYTEIGxf49zEX-bvbDKqbSoo/export?format=csv&id=1y2hdtxk8f14T5g5DfNoYYTEIGxf49zEX-bvbDKqbSoo&gid=0',
         dataType: "text",
         success: function (csvData) { makeGeoJSON(csvData); }
       });
