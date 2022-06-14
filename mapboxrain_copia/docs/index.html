@@ -484,7 +484,7 @@ map.on('click', 'building', function (e) {
           map.addSource("locations", {
             type: "geojson",
             data: data,
-            cluster: true,
+            cluster: false,
             clusterMaxZoom: 20,
             clusterRadius: 5
           });
