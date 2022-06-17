@@ -622,15 +622,7 @@ map.on('click', 'building', function (e) {
         language: 'es'
 });
 
-       
-        map.addControl(
-new MapboxDirections({
-accessToken: mapboxgl.accessToken
-}),
-'top-left'
-);
-        
-        //map.addControl(directions, 'top-left');
+ 
         map.scrollZoom.enable();
         
         map.addControl(new mapboxgl.NavigationControl());
@@ -666,9 +658,9 @@ accessToken: mapboxgl.accessToken
                 mapStyleBg.style.display = 'none';
                 map.removeLayer('rain');
                 map.once('styledata', () => {
-                    map.setStyle(style === 'terrain' ? 'rain-layer.json' : `mapbox://styles/mapbox/${style}`);
+                    map.setStyle(style === 'streets-v11' ? 'rain-layer.json' : `mapbox://styles/mapbox/${style}`);
                     map.once('styledata', () => {
-                       map.addLayer(rainLayer, style === 'terrain' ? 'water-boundary-bg' : style !== 'satellite-v9' ? 'road-label' : null);
+                       map.addLayer(rainLayer, style === 'streets-v11' ? 'water-boundary-bg' : style !== 'satellite-v9' ? 'road-label' : null);
                     });
                 });
                 mapStyle = style;
@@ -676,7 +668,7 @@ accessToken: mapboxgl.accessToken
         }
             
             
-            
+            map.addControl(directions, 'top-left'); 
             
             
             
