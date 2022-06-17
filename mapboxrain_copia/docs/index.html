@@ -623,7 +623,14 @@ map.on('click', 'building', function (e) {
 });
 
        
-        map.addControl(directions, 'top-left');
+        map.addControl(
+new MapboxDirections({
+accessToken: mapboxgl.accessToken
+}),
+'top-left'
+);
+        
+        //map.addControl(directions, 'top-left');
         map.scrollZoom.enable();
         
         map.addControl(new mapboxgl.NavigationControl());
