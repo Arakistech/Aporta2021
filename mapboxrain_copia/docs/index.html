@@ -396,8 +396,8 @@ map.on('click', 'building', function (e) {
           slideshowContent +
           '</div>' +
           '<div class="cycle">' +
-          '<a href="#" class="prev">&laquo; Previous</a>' +
-          '<a href="#" class="next">Next &raquo;</a>' +
+          '<a href="#" class="prev">&laquo; Previo</a>' +
+          '<a href="#" class="next">Siguiente &raquo;</a>' +
           '</div>'
         '</div>';
 
@@ -622,10 +622,8 @@ map.on('click', 'building', function (e) {
         language: 'es'
 });
 
- 
-        map.scrollZoom.enable();
         map.addControl(directions, 'top-left'); 
-            
+        map.scrollZoom.enable();
         map.addControl(new mapboxgl.NavigationControl());
         map.addControl(new mapboxgl.FullscreenControl({container: root}));
         map.addControl(new MapboxGLButtonControl([{
