@@ -463,6 +463,7 @@
                 e.target.classList.add('active');
                 mapStyleBg.style.display = 'none';
                 map.removeLayer('rain');
+                map.removeLayer('directions');
                 map.once('styledata', () => {
                     map.setStyle(style === 'terrain' ? 'rain-layer.json' : `mapbox://styles/mapbox/${style}`);
                     map.once('styledata', () => {
