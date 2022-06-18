@@ -202,45 +202,7 @@
         
         
         
-        
-        
-map.on('click', 'building', function (e) {
-        var description = e.features[0].properties.height;
-        var centerPoint = turf.centerOfMass(e.features[0]);
-        var coordinates = centerPoint.geometry.coordinates;
-       // Ensure that if the map is zoomed out such that multiple
-       // copies of the feature are visible, the popup appears
-       // over the copy being pointed to.
-       while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-           coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-       }
-
-       popup.setLngLat(coordinates)
-           .setHTML('<b>Altura del edificio: </b>' + description + ' metros ')
-           .addTo(map);
-   });
-
-   // Change the cursor to a pointer when the mouse is over the places layer.
-   map.on('mouseenter', 'building', function () {
-       map.getCanvas().style.cursor = 'pointer';
-   });
-
-   // Change it back to a pointer when it leaves.
-   map.on('mouseleave', 'building', function () {
-       map.getCanvas().style.cursor = '';
-   }); 
-        
-        
-      
-        
-    
-        
-        
-        
-        
-        
-        
-        
+ 
     
     var geojsonFeatures = {
       type: 'FeatureCollection',
@@ -450,160 +412,7 @@ map.on('click', 'building', function (e) {
         
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        $(document).ready(function () {
-      $.ajax({
-        type: "GET",
-        url: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQEbmMxA7k2sX22T-lzLV_oAN3VNIcQQt4NGngzSm8A_sWW1eTeHmth-Nt1O6kUa6X4FFnXlEVVNPdI/pub?gid=1905462241&single=true&output=csv',
-        dataType: "text",
-        success: function (csvData) { makeGeoJSON(csvData); }
-      });
-    });
-
-    function makeGeoJSON(csvData) {
-      console.log(csvData)
-      csv2geojson.csv2geojson(csvData, {
-        latfield: 'Latitude',
-        lonfield: 'Longitude',
-        delimiter: ','
-      }, function (err, data) {
-        console.log(data)
-        map.on('load', function () {
-
-          map.addSource("locations", {
-            type: "geojson",
-            data: data,
-            cluster: false,
-            clusterMaxZoom: 20,
-            clusterRadius: 5
-          });
-
-          map.addLayer({
-            id: "clusters",
-            type: "symbol",
-            source: "locations",
-            filter: ["has", "point_count"],
-            layout: {
-              "icon-image": "za-provincial-2",
-              "text-field": "{point_count_abbreviated}",
-              "text-font": ["DIN Offc Pro Medium", "Arial Unicode MS Bold"],
-              "text-size": 12,
-            },
-            paint: {
-              "text-color": "#000"
-            }
-          });
-
-          map.addLayer({
-            id: 'unclustered-count',
-            type: 'symbol',
-            source: 'locations',
-            filter: ['!has', 'point_count'],
-            layout: {
-              "icon-image": "za-provincial-2",
-                
-             
-            }
-          });
-        });
-      });
-    }
-                   
-        
-        
-        
-        
-        
      
-        
-        
-        
-        
-    map.on('load', function(){
-  var scale = new mapboxgl.ScaleControl({
-    maxWidth: 80,
-    unit: 'metric'
-  });
-
-  map.addControl(scale);
-  map.addControl(new MapboxTraffic());
-});    
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    function toggleSidebar(id) 
-            {
-
-                var elem = document.getElementById(id);
-                var classes = elem.className.split(' ');
-                var collapsed = classes.indexOf('collapsed') !== -1;
-  
-                var padding = {};
-  
-                if ( collapsed ) 
-                {
-
-                    // Remove the 'collapsed' class from the class list of the element, this sets it back to the expanded state.
-                    classes.splice(classes.indexOf('collapsed'), 1);
-
-                    padding[id] = 300; // In px, matches the width of the sidebars set in .sidebar CSS class
-                    map.easeTo({
-                        padding: padding,
-                        duration: 1000 // In ms, CSS transition duration property for the sidebar matches this value
-                    });
-
-                } 
-
-                else 
-                {
-
-                    padding[id] = 0;
-                    // Add the 'collapsed' class to the class list of the element
-                    classes.push('collapsed');
-  
-                    map.easeTo({
-                        padding: padding,
-                        duration: 1000
-                    });
-
-                }
-  
-                // Update the class list on the element
-                elem.className = classes.join(' ');
-
-            }
-  
-            map.on( 'load', function () {
-                toggleSidebar('left');
-            });
-
     
         
          
@@ -671,7 +480,64 @@ map.on('click', 'building', function (e) {
             
             
             
-            
+  map.on('load', function(){
+  var scale = new mapboxgl.ScaleControl({
+    maxWidth: 80,
+    unit: 'metric'
+  });
+
+  map.addControl(scale);
+  map.addControl(new MapboxTraffic());
+});    
+        
+   
+        
+    function toggleSidebar(id) 
+            {
+
+                var elem = document.getElementById(id);
+                var classes = elem.className.split(' ');
+                var collapsed = classes.indexOf('collapsed') !== -1;
+  
+                var padding = {};
+  
+                if ( collapsed ) 
+                {
+
+                    // Remove the 'collapsed' class from the class list of the element, this sets it back to the expanded state.
+                    classes.splice(classes.indexOf('collapsed'), 1);
+
+                    padding[id] = 300; // In px, matches the width of the sidebars set in .sidebar CSS class
+                    map.easeTo({
+                        padding: padding,
+                        duration: 1000 // In ms, CSS transition duration property for the sidebar matches this value
+                    });
+
+                } 
+
+                else 
+                {
+
+                    padding[id] = 0;
+                    // Add the 'collapsed' class to the class list of the element
+                    classes.push('collapsed');
+  
+                    map.easeTo({
+                        padding: padding,
+                        duration: 1000
+                    });
+
+                }
+  
+                // Update the class list on the element
+                elem.className = classes.join(' ');
+
+            }
+  
+            map.on( 'load', function () {
+                toggleSidebar('left');
+            });
+  
     
             
             
