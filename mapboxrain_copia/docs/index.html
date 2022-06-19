@@ -470,10 +470,10 @@
                        map.addLayer(rainLayer, style === 'terrain' ? 'water-boundary-bg' : style !== 'satellite-v9' ? 'road-label' : null);
                     });
                 });
-                
-                mapStyle = style;
                 removeDirectionsLayers();
-                //addDirectionsLayers();
+                mapStyle = style;
+                addDirectionsLayers();
+                
             });
         }
             
