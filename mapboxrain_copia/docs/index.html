@@ -456,7 +456,7 @@
         mapStyleBg.addEventListener('click', () => {
             mapStyleBg.style.display = 'none';
         });
-        for (const style of ['terrain', 'streets-v11', 'outdoors-v11', 'light-v10', 'dark-v10', 'satellite-v9', 'satellite-streets-v11']) {
+        for (const style of ['terrain', 'streets-v11', 'outdoors-v11', 'navigation-day-v1', 'dark-v10', 'satellite-v9', 'satellite-streets-v11']) {
             const e = document.getElementById(style);
             e.addEventListener('click', function (e) {
                 document.querySelector('#map-styles .active').classList.remove('active');
