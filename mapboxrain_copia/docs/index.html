@@ -52,16 +52,6 @@
 <body>
     <div id="root">
         <div id="map">
-            
-              <div id="show-directions-container">
-        <i class=" material-icons md-48 md-light black-border noselect"
-            onclick="toggleDirectionSection()">navigation</i>
-        <br>
-        <span class="black-border">NAV</span>
-    </div>
-            
-            
-            
              <div id="instructions"></div>
                 <div id="left" class="sidebar flex-center left collapsed">
                 <div class="sidebar-content rounded-rect flex-center">     <div id="title">
@@ -409,29 +399,7 @@
         
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        function toggleDirectionSection() {
-        if (showingDirectionsSection) {
-            document.getElementsByClassName('mapboxgl-ctrl-directions')[0].style.display = 'none';
-            document.getElementById('show-directions-container').style.display = 'block';
-            document.getElementById('direction-buttons').style.display = 'none';
-            directionContol.interactive(false);
-            showingDirectionsSection = false;
-        } else {
-            document.getElementsByClassName('mapboxgl-ctrl-directions')[0].style.display = 'block';
-            document.getElementById('show-directions-container').style.display = 'none';
-            document.getElementById('direction-buttons').style.display = 'block';
-            directionContol.interactive(true);
-            showingDirectionsSection = true;
-        }
-    }
+ 
         
         
         
