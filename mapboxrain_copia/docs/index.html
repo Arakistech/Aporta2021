@@ -75,7 +75,7 @@
                 <div id="dark-v10"><span></span>Oscuro</div>
                 <div id="satellite-v9"><span></span>Satelite</div>
                 <div id="satellite-streets-v11"><span></span>Satelite Calles</div>
-                <div id="iarakistain/cl4laf0x1001q14o9tgveyzzu"><span></span>Edificios 3D</div>
+               <!-- <div id="iarakistain/cl4laf0x1001q14o9tgveyzzu"><span></span>Edificios 3D</div> -->
             </div>
         </div>
         
@@ -461,7 +461,7 @@
         mapStyleBg.addEventListener('click', () => {
             mapStyleBg.style.display = 'none';
         });
-        for (const style of ['terrain', 'streets-v11', 'outdoors-v11', 'light-v10', 'dark-v10', 'satellite-v9', 'satellite-streets-v11', 'iarakistain/cl4laf0x1001q14o9tgveyzzu']) {
+        for (const style of ['terrain', 'streets-v11', 'outdoors-v11', 'light-v10', 'dark-v10', 'satellite-v9', 'satellite-streets-v11']) {
             const e = document.getElementById(style);
             e.addEventListener('click', function (e) {
                 document.querySelector('#map-styles .active').classList.remove('active');
