@@ -223,8 +223,6 @@
         const labelLayerId = layers.find(
             (layer) => layer.type === 'symbol' && layer.layout['text-field']
         ).id;
-        
-        
           map.addLayer(
             {
                 'id': 'add-3d-buildings',
@@ -234,7 +232,7 @@
                 'type': 'fill-extrusion',
                 'minzoom': 15,
                 'paint': {
-                    'fill-extrusion-color': '#aaa',
+                    'fill-extrusion-color': '#2218a7',
 
                     // Use an 'interpolate' expression to
                     // add a smooth transition effect to
@@ -257,7 +255,7 @@
                         15.05,
                         ['get', 'min_height']
                     ],
-                    'fill-extrusion-opacity': 0.6
+                    'fill-extrusion-opacity': 0.8
                 }
             },
             labelLayerId
