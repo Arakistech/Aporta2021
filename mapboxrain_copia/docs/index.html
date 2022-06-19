@@ -508,7 +508,7 @@
         
             
          
-         map.on('change', () => {
+         map.on('load', () => {
         // Insert the layer beneath any symbol layer.
         const layers = map.getStyle().layers;
         const labelLayerId = layers.find(
