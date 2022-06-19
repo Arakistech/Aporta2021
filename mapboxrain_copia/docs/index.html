@@ -514,27 +514,7 @@
         
         
         
-        map.addLayer({
-      'id': '3d-buildings',
-      'source': 'composite',
-      'source-layer': 'building', // building-height data from OpenStreetMap
-      'filter': ['==', 'extrude', 'true'],
-      'type': 'fill-extrusion',
-      //'minzoom': 15,
-      'paint': {
-        'fill-extrusion-color': '#aaa', // #aaa === 33% black
-        'fill-extrusion-height': {
-          'type': 'identity',
-          'property': 'height'
-        },
-        'fill-extrusion-base': {
-          'type': 'identity',
-          'property': 'min_height'
-        },
-        'fill-extrusion-opacity': 0.5
-      }
-    });
-        
+ 
         
         
         
