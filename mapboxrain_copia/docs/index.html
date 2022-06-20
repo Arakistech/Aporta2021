@@ -58,7 +58,17 @@
                     <div id="last-updated"></div>
 		    <a id="downloadLink" href="" download="map.png">Descarga .png ↓</a>
 		    <button id="icon"> 3D </button>
-                        </div>      
+                        </div>  
+			
+			<div class="button" id="satellite-toggle">
+			<div class="checkbox" id="sat-check"></div>
+				<p>Satellite</p>
+			</div>
+		</div>
+			
+			
+			
+				
                     <img src="aire.jpg" alt="Italian Trulli">
                     <div id="legend" class="hidden"></div>
                      <div class="sidebar-toggle rounded-rect left" onclick="toggleSidebar('left')" >&rarr; 
@@ -213,7 +223,28 @@
         
         
         
-        
+       
+	   
+	    
+	    
+	    
+	    
+	    
+	    
+	    if (satelliteCheck == false) {
+		map.setStyle('mapbox://styles/iarakistain/cl4laf0x1001q14o9tgveyzzu');
+		document.getElementById('sat-check').classList.add('checked');
+		satelliteCheck = true;
+	} else {
+		map.setStyle('mapbox://styles/robwearsglasses/ckco2awis367n1kpgw0k6y2ml');
+		document.getElementById('sat-check').classList.remove('checked');
+		satelliteCheck = false;
+		//document.getElementById('test').classList.remove('checked');
+	}
+	    
+	    
+	    
+	    
         
         
         
