@@ -514,7 +514,7 @@ icon.addEventListener('click', () => {
         const labelLayerId = layers.find(
             (layer) => layer.type === 'symbol' && layer.layout['text-field']
         ).id;
-	   removeDirectionsLayers();
+	   
           map.addLayer(
             {
                 'id': 'add-3d-buildings',
@@ -548,11 +548,14 @@ icon.addEventListener('click', () => {
                         ['get', 'min_height']
                     ],
                     'fill-extrusion-opacity': 0.8
-		    addDirectionsLayers();
+		   
                 }
             },
             labelLayerId
         );
+	
+	 removeDirectionsLayers();
+         addDirectionsLayers();
     });
         
         
