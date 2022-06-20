@@ -52,6 +52,7 @@
     <div id="root">
         <div id="map">
              <div id="instructions"></div>
+          <button id="icon"> Switch layers </button>
                 <div id="left" class="sidebar flex-center left collapsed">
                 <div class="sidebar-content rounded-rect flex-center">     <div id="title">
                     <div id="time"></div>
@@ -504,11 +505,10 @@
         
         
         
-        
-        
-            
-         
-         map.on('load', () => {
+ let icon = document.getElementById('icon');
+
+icon.addEventListener('click', () => {
+	
         // Insert the layer beneath any symbol layer.
         const layers = map.getStyle().layers;
         const labelLayerId = layers.find(
