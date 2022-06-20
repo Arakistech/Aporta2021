@@ -449,6 +449,38 @@
         language: 'es'
 });
 
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    const layerList = document.getElementById('iarakistain/cl4laf0x1001q14o9tgveyzzu');
+const inputs = layerList.getElementsByTagName('input');
+ 
+for (const input of inputs) {
+input.onclick = (layer) => {
+const layerId = layer.target.id;
+map.setStyle('mapbox://styles/iarakistain/cl4laf0x1001q14o9tgveyzzu' + layerId);
+};
+}
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
        
         map.addControl(directions, 'top-left');
         map.scrollZoom.enable();
