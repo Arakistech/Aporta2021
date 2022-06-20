@@ -453,18 +453,7 @@
 	    
 	    
 	    
-	    
-	    
-	    
-	    const layerList = document.getElementById('iarakistain/cl4laf0x1001q14o9tgveyzzu');
-const inputs = layerList.getElementsByTagName('input');
- 
-for (const input of inputs) {
-input.onclick = (layer) => {
-const layerId = layer.target.id;
-map.setStyle('mapbox://styles/iarakistain/cl4laf0x1001q14o9tgveyzzu' + layerId);
-};
-}
+
 	    
 	    
 	    
@@ -511,7 +500,7 @@ map.setStyle('mapbox://styles/iarakistain/cl4laf0x1001q14o9tgveyzzu' + layerId);
         mapStyleBg.addEventListener('click', () => {
             mapStyleBg.style.display = 'none';
         });
-        for (const style of ['terrain', 'streets-v11', 'outdoors-v11', 'light-v10', 'dark-v10', 'satellite-v9', 'satellite-streets-v11']) {
+        for (const style of ['terrain', 'streets-v11', 'outdoors-v11', 'light-v10', 'dark-v10', 'satellite-v9', 'satellite-streets-v11', 'iarakistain/cl4laf0x1001q14o9tgveyzzu']) {
             const e = document.getElementById(style);
             e.addEventListener('click', function (e) {
                 document.querySelector('#map-styles .active').classList.remove('active');
