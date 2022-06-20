@@ -12,6 +12,14 @@ html, body {
     width: 100%;
     height: 100%;
 }
+
+
+#downloadLink {
+font-size: 22px;    
+    
+}
+
+
 #title {
     position: absolute;
     width: 270px;
