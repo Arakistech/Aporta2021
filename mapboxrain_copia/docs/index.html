@@ -479,7 +479,7 @@
         mapStyleBg.addEventListener('click', () => {
             mapStyleBg.style.display = 'none';
         });
-        for (const style of ['terrain', 'streets-v11', 'outdoors-v11', 'light-v10', 'dark-v10', 'satellite-v9', 'satellite-streets-v11']) {
+        for (const style of ['mapbox/terrain', 'mapbox/streets-v11', 'mapbox/outdoors-v11', 'mapbox/light-v10', 'mapbox/dark-v10', 'mapbox/satellite-v9', 'mapbox/satellite-streets-v11']) {
             const e = document.getElementById(style);
             e.addEventListener('click', function (e) {
                 document.querySelector('#map-styles .active').classList.remove('active');
@@ -488,7 +488,7 @@
                 map.removeLayer('rain');
                 map.removeLayer('directions');
                 map.once('styledata', () => {
-                    map.setStyle(style === 'terrain' ? 'rain-layer.json' : `mapbox://styles/mapbox/${style}`);
+                    map.setStyle(style === 'terrain' ? 'rain-layer.json' : `mapbox://styles/${style}`);
                     map.once('styledata', () => {
                        map.addLayer(rainLayer, style === 'terrain' ? 'water-boundary-bg' : style !== 'satellite-v9' ? 'road-label' : null);
                     });
