@@ -64,6 +64,19 @@
     			<label for="id2" style="font-size: 12px">Otros</label>
     			<input id="id2" type="checkbox" value="2" class="filter"/>
 			</div>
+			
+			
+			<label><input type="checkbox" id="check" /> CHECK for addEventListener
+			</label>
+			<p id="verdict"></p>
+  				<script>
+     					var y = document.getElementById('check');
+     		 			y.addEventListener('change', function(){
+      					document.getElementById('verdict').innerHTML = y.checked;
+    					});
+	  			</script>
+			
+		
 		    
                     <img src="aire.jpg" alt="Italian Trulli">
                     <div id="legend" class="hidden"></div>
