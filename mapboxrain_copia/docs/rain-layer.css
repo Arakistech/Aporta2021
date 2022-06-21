@@ -13,6 +13,13 @@ html, body {
     height: 100%;
 }
 
+#id1{
+font-size: 12px; 
+}
+
+#id2{
+font-size: 12px; 
+}
 
 #downloadLink {
 font-size: 12px;    
