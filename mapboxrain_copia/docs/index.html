@@ -61,14 +61,14 @@
 			<a id="downloadLink" href="" download="map.png">Descarga .png ↓</a>
 			<! -- addEventListener -->
 			
-			<label for="check" style="font-size: 12px">Cardio</label>
-    			<input id="check" type="checkbox" value="1" class="filter" unchecked/> 
+			<label for="check" style="font-size: 12px">Cardioprotección</label>
+    			<input id="check" type="checkbox" value="1" class="filter" checked/> 
 			<p id="verdict" style="font-size: 12px"></p>
 			</div>
   				<script>
      					var y = document.getElementById('check');
      		 			y.addEventListener('change', function(){
-      					document.getElementById('verdict').innerHTML = y.checked;
+      					document.getElementById('verdict').innerHTML = y.unchecked;
     					});
 	  			</script>
 			
