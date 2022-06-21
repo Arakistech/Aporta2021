@@ -220,8 +220,8 @@ font-size: 12px;
              
             .sidebar-toggle {
                 position: absolute;
-                width: 1.1em;
-                height: 1.1em;
+                width: 1.2em;
+                height: 1.2em;
                 overflow: invisible;
                 display: flex;
                 justify-content: center;
@@ -229,11 +229,11 @@ font-size: 12px;
             }
              
             .sidebar-toggle.left {
-                right: -1.3em;
+                right: -1.4em;
             }
              
             .sidebar-toggle.right {
-                left: -1.3em;
+                left: -1.4em;
             }
              
             .sidebar-toggle:hover {
