@@ -583,31 +583,8 @@ popup.remove();
         map.addControl(directions, 'top-left');
         map.scrollZoom.enable();
         map.addControl(new mapboxgl.NavigationControl());
+	map.addControl(new MapboxTraffic());
         map.addControl(new mapboxgl.FullscreenControl({container: root}));
-	    
-	    
-	 
-	    
-	    
-	    
-	    map.addControl(new MapboxGLButtonControl([{
-            className: 'mapboxgl-ctrl-home',
-            title: 'Fly to home position',
-            eventHandler() {
-                deselectMarker();
-                cameraListElement.style.display = 'none';
-                map.flyTo({center: [31.685, 47.774], zoom: 5.5, bearing: 0, pitch: 45});
-                canvasElement.focus();
-            }
-        }])); 
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
         map.addControl(new MapboxGLButtonControl([{
             className: 'mapboxgl-ctrl-map',
             title: 'Map Style',
