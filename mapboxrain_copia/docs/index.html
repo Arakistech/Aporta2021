@@ -603,9 +603,13 @@ popup.remove();
 		
 	{className: 'mapboxgl-ctrl-home',
 	 title: 'Map Home',
-	 eventHandler() {
-            
-       mapStyleBg.style.display = 'block';
+	 title: 'Fly to home position',
+            eventHandler() {
+                deselectMarker();
+                cameraListElement.style.display = 'none';
+                map.flyTo({center: [31.685, 47.774], zoom: 5.5, bearing: 0, pitch: 45});
+                canvasElement.focus();
+            }
             
      });
             }
