@@ -638,6 +638,7 @@ popup.remove();
                        map.addLayer(rainLayer, style === 'terrain' ? 'water-boundary-bg' : style !== 'satellite-v9' ? 'road-label' : null);
                     });
                 });
+		map.remove();
                 removeDirectionsLayers();
                 mapStyle = style;
                 addDirectionsLayers();
