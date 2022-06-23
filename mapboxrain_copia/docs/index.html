@@ -214,8 +214,7 @@
         mapboxgl.accessToken = 'pk.eyJ1IjoiaWFyYWtpc3RhaW4iLCJhIjoiY2t4NHBqNHd1MHRvaTJubnhodmxqdXhjbiJ9.T6OE8lXKHGCObadLCmIoqg';
         const map = new mapboxgl.Map({
             container: 'map',
-            //style: 'rain-layer.json',
-	    style:'mapbox://styles/iarakistain/cl4laf0x1001q14o9tgveyzzu',
+            style: 'rain-layer.json',
             minZoom: 2,
             maxZoom: 18,
             hash: true,
@@ -638,7 +637,7 @@ popup.remove();
                        map.addLayer(rainLayer, style === 'terrain' ? 'water-boundary-bg' : style !== 'satellite-v9' ? 'road-label' : null);
                     });
                 });
-		map.remove();
+		
                 removeDirectionsLayers();
                 mapStyle = style;
                 addDirectionsLayers();
