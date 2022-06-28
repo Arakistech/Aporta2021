@@ -78,6 +78,7 @@ const LIVECAMS_URL = 'https://raw.githubusercontent.com/Arakistech/Aporta2021/ma
             const sunAzimuth = 180 + azimuth * 180 / Math.PI;
             const sunAltitude = 90 - altitude * 180 / Math.PI;
             map.setPaintProperty('sky', 'sky-atmosphere-sun', [sunAzimuth, sunAltitude]);
+            map.setStyle('mapbox://styles/iarakistain/cl4x51czl004514oga1amzw1s'); 
         }
 
         function createElement(tagName, attributes, container) {
@@ -384,7 +385,7 @@ const LIVECAMS_URL = 'https://raw.githubusercontent.com/Arakistech/Aporta2021/ma
             hash: true
         });
         
-        map.setStyle('mapbox://styles/iarakistain/cl4x51czl004514oga1amzw1s'); 
+        
         map.addControl(new mapboxgl.NavigationControl());
         map.addControl(new mapboxgl.FullscreenControl({container: root}));
         map.addControl(new MapboxGLButtonControl([{
