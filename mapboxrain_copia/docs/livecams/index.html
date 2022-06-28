@@ -383,6 +383,8 @@ const LIVECAMS_URL = 'https://raw.githubusercontent.com/Arakistech/Aporta2021/ma
             minZoom: 4,
             hash: true
         });
+        
+        map.setStyle('mapbox://styles/iarakistain/cl4x51czl004514oga1amzw1s'); 
         map.addControl(new mapboxgl.NavigationControl());
         map.addControl(new mapboxgl.FullscreenControl({container: root}));
         map.addControl(new MapboxGLButtonControl([{
