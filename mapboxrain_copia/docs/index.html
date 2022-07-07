@@ -11,32 +11,33 @@
     
     <meta charset="utf-8">
     <title>GeoMapa Saludable</title>
+	
     <meta name="description" content="GeoMapa saludable de Ermua - by Metabertsoa"/>
     <meta name="keywords" content="Izarra, Ermua, threejs"/>
     <meta name="author" content="www.metabertsoa.eus"/>
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"/>
     <meta property="og:title" content="GeoMapa Saludable" />
     <meta property="og:locale" content="es_ES" />
-    <link rel="canonical" href="https://arakistech.github.io/Aporta2021/" />
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/35bfc7e8c123f9d5.png">
     <meta property="og:url" content="https://arakistech.github.io/Aporta2021/" />
     <meta property="og:site_name" content="GeoMapa saludable de Ermua" />
     <meta property="og:image" content="https://nagix.github.io/mapbox-gl-rain-layer/screenshot1.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@Tactizity" />
+	
+    <link rel="canonical" href="https://arakistech.github.io/Aporta2021/" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/35bfc7e8c123f9d5.png">
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css" rel="stylesheet">
     <link href="rain-layer.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/monolith.min.css" rel="stylesheet">
+    <link href='mapbox-gl-traffic.css' rel='stylesheet' />
+	
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/mapbox-gl-rain-layer@0.5.0/dist/mapbox-gl-rain-layer.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/suncalc@1.8.0/suncalc.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
     <script src='https://npmcdn.com/csv2geojson@latest/csv2geojson.js'></script>
     <script src='mapbox-gl-traffic.js'></script>
-    <link href='mapbox-gl-traffic.css' rel='stylesheet' />
-   
     
     <!-- Import Turf and Polyline -->
     <script src="https://npmcdn.com/@turf/turf/turf.min.js"></script>
@@ -45,8 +46,7 @@
     <!-- Import Mapbox GL Directions -->
     <script src="mapbox-gl-directions.js"></script>
     <link rel="stylesheet" href=https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.css type="text/css" /> 
-
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
        
 </head>
 <body>
@@ -96,12 +96,7 @@
                 <div id="iarakistain/cl4x51czl004514oga1amzw1s" class="active"><span></span>Edificios 3D</div> 
             </div>
         </div>
-        
-        
-    
-        
-        
-        
+             
         
         <div id="rain-bg">
             <div id="rain">
@@ -187,7 +182,7 @@
         }
     }
 
-    function setSunPosition(map) {
+        function setSunPosition(map) {
         const {lng, lat} = map.getCenter();
         const {azimuth, altitude} = SunCalc.getPosition(Date.now(), lat, lng);
         const sunAzimuth = 180 + azimuth * 180 / Math.PI;
@@ -259,7 +254,7 @@
         }
       },
                  
-                     {
+                 {
                      type: 'Feature',
         "geometry": { "type": "Point", "coordinates": [-2.5069334182849867, 43.18786475703378] },
         "properties": {
@@ -298,13 +293,7 @@
       } ]
     };
 
-        
-        
-        
-        
-        
-        
-        
+      
     map.on('load', function () {
       geojsonFeatures.features.forEach(function (marker) {
 
@@ -368,188 +357,165 @@
       return false;
     });
         
-        
-        
-        
-        
-        
- 
-        
-        
-        
-        
-        
-        
-        
-     
-        
-      
+            
 	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	map.on('load', () => {		
+map.on('load', () => {		
 map.addSource('places', {
 'type': 'geojson',
 'data': {
 'type': 'FeatureCollection',
 'features': [
 {
-'type': 'Feature',
-'properties': {
-'description':
-'<strong>Punto cardioprotegido 1</strong><p>BEXEN CARDIO REANIBEX</p>'
+	'type': 'Feature',
+	'properties': {
+	'description':
+	'<strong>Punto cardioprotegido 1</strong><p>BEXEN CARDIO REANIBEX</p>'
 },
-'geometry': {
-'type': 'Point',
-'coordinates': [-2.5049797467, 43.1876122798]
+	'geometry': {
+	'type': 'Point',
+	'coordinates': [-2.5049797467, 43.1876122798]
 }
 },
 {
-'type': 'Feature',
-'properties': {
-'description':
-'<strong>Punto cardioprotegido 2</strong><p>BEXEN CARDIO REANIBEX</p>'
+	'type': 'Feature',
+	'properties': {
+	'description':
+	'<strong>Punto cardioprotegido 2</strong><p>BEXEN CARDIO REANIBEX</p>'
 },
-'geometry': {
-'type': 'Point',
-'coordinates': [-2.5016121705, 43.1860840471]  
+	'geometry': {
+	'type': 'Point',
+	'coordinates': [-2.5016121705, 43.1860840471]  
 }
 },
 {
-'type': 'Feature',
-'properties': {
-'description':
-'<strong>Punto cardioprotegido 3</strong><p>REANIBEX 300</p>'
+	'type': 'Feature',
+	'properties': {
+	'description':
+	'<strong>Punto cardioprotegido 3</strong><p>REANIBEX 300</p>'
 },
-'geometry': {
-'type': 'Point',
-'coordinates': [-2.52123, 43.18618]
+	'geometry': {
+	'type': 'Point',
+	'coordinates': [-2.52123, 43.18618]
 }
 },
 {
-'type': 'Feature',
-'properties': {
-'description':
-'<strong>Punto cardioprotegido 4</strong><p>PHILIPS HEARTSTART HS1</p> <p>Horario: 06:00h-23:00h</p>'
+	'type': 'Feature',
+	'properties': {
+	'description':
+	'<strong>Punto cardioprotegido 4</strong><p>PHILIPS HEARTSTART HS1</p> <p>Horario: 06:00h-23:00h</p>'
 },
-'geometry': {
-'type': 'Point',
-'coordinates': [-2.5078479943, 43.1895818411]  
+	'geometry': {
+	'type': 'Point',
+	'coordinates': [-2.5078479943, 43.1895818411]  
 }
 },
 
 	
 {
-'type': 'Feature',
-'properties': {
-'description':
-'<strong>Punto cardioprotegido 5</strong><p>PHILIPS HEARTSTART HS1</p> <p>Horario: 06:00h-23:00h</p>'
+	'type': 'Feature',
+	'properties': {
+	'description':
+	'<strong>Punto cardioprotegido 5</strong><p>PHILIPS HEARTSTART HS1</p> <p>Horario: 06:00h-23:00h</p>'
 },
-'geometry': {
-'type': 'Point',
-'coordinates': [-2.5099269852, 43.1867459779]
+	'geometry': {
+	'type': 'Point',
+	'coordinates': [-2.5099269852, 43.1867459779]
 }
 },
 {
-'type': 'Feature',
-'properties': {
-'description':
-'<strong>Punto cardioprotegido 6</strong><p>PHILIPS HEARTSTART HS1</p> <p>Horario: 06:00h-23:00h</p>'
+	'type': 'Feature',
+	'properties': {
+	'description':
+	'<strong>Punto cardioprotegido 6</strong><p>PHILIPS HEARTSTART HS1</p> <p>Horario: 06:00h-23:00h</p>'
 },
-'geometry': {
-'type': 'Point',
-'coordinates': [-2.500951664, 43.1849725]
+	'geometry': {
+	'type': 'Point',
+	'coordinates': [-2.500951664, 43.1849725]
 }
 },
 {
-'type': 'Feature',
-'properties': {
-'description':
-'<strong>Punto cardioprotegido 7</strong><p>PHILIPS HEARTSTART HS1</p> <p>Horario: 24 horas</p>'
+	'type': 'Feature',
+	'properties': {
+	'description':
+	'<strong>Punto cardioprotegido 7</strong><p>PHILIPS HEARTSTART HS1</p> <p>Horario: 24 horas</p>'
 },
-'geometry': {
-'type': 'Point',
-'coordinates': [-2.507861039, 43.1908838067]
+	'geometry': {
+	'type': 'Point',
+	'coordinates': [-2.507861039, 43.1908838067]
 }
 },
 {
-'type': 'Feature',
-'properties': {
-'description':
-'<strong>Punto cardioprotegido 8</strong><p>PHILIPS HEARTSTART HS1</p> <p>Horario: 06:00h-23:00h</p>'
+	'type': 'Feature',
+	'properties': {
+	'description':
+	'<strong>Punto cardioprotegido 8</strong><p>PHILIPS HEARTSTART HS1</p> <p>Horario: 06:00h-23:00h</p>'
 },
-'geometry': {
-'type': 'Point',
-'coordinates': [-2.5094462739, 43.1911458099]
-}
-},	
-{
-'type': 'Feature',
-'properties': {
-'description':
-'<strong>Punto cardioprotegido 9</strong><p>PHILIPS HEARTSTART HS1</p><p>Horario: 24 horas</p>'
-},
-'geometry': {
-'type': 'Point',
-'coordinates': [-2.5084214572, 43.187529778]
+	'geometry': {
+	'type': 'Point',
+	'coordinates': [-2.5094462739, 43.1911458099]
 }
 },	
 {
-'type': 'Feature',
-'properties': {
-'description':
-'<strong>Punto cardioprotegido 10</strong><p>PHILIPS HS1</p> <p>Horario: 24 horas</p>'
+	'type': 'Feature',
+	'properties': {
+	'description':
+	'<strong>Punto cardioprotegido 9</strong><p>PHILIPS HEARTSTART HS1</p><p>Horario: 24 horas</p>'
 },
-'geometry': {
-'type': 'Point',
-'coordinates': [-2.50735, 43.18719]
+	'geometry': {
+	'type': 'Point',
+	'coordinates': [-2.5084214572, 43.187529778]
+}
+},	
+{
+	'type': 'Feature',
+	'properties': {
+	'description':
+	'<strong>Punto cardioprotegido 10</strong><p>PHILIPS HS1</p> <p>Horario: 24 horas</p>'
+},
+	'geometry': {
+	'type': 'Point',
+	'coordinates': [-2.50735, 43.18719]
 }
 },
 {
-'type': 'Feature',
-'properties': {
-'description':
-'<strong>Punto cardioprotegido 11</strong><p>PHILIPS HS1</p> <p>Horario: 06:00h-23:00h</p>'
+	'type': 'Feature',
+	'properties': {
+	'description':
+	'<strong>Punto cardioprotegido 11</strong><p>PHILIPS HS1</p> <p>Horario: 06:00h-23:00h</p>'
 },
-'geometry': {
-'type': 'Point',
-'coordinates': [-2.5073466866, 43.1872155705]
+	'geometry': {
+	'type': 'Point',
+	'coordinates': [-2.5073466866, 43.1872155705]
 }
 },
 	
 {
-'type': 'Feature',
-'properties': {
-'description':
-"<strong>Seersucker Bike Ride and Social</strong><p>Feeling dandy? Get fancy, grab your bike, and take part in this year's Seersucker Social bike ride from Dandies and Quaintrelles. After the ride enjoy a lawn party at Hillwood with jazz, cocktails, paper hat-making, and more. 11:00-7:00 p.m.</p>"
+	'type': 'Feature',
+	'properties': {
+	'description':
+	"<strong>Seersucker Bike Ride and Social</strong><p>Feeling dandy? Get fancy, grab your bike, and take part in this year's Seersucker Social bike ride from Dandies and Quaintrelles. After the ride enjoy a lawn party at Hillwood with jazz, cocktails, paper hat-making, and more. 11:00-7:00 p.m.</p>"
 },
 
-'geometry': {
-'type': 'Point',
-'coordinates': [-77.007481, 38.876516]
+	'geometry': {
+	'type': 'Point',
+	'coordinates': [-77.007481, 38.876516]
 }
 }
 ]
 }
 });
+	
+	
 // Add a layer showing the places.
 map.addLayer({
 'id': 'places',
 'type': 'circle',
 'source': 'places',	
 'paint': {
-'circle-color': '#eb0e33',
-'circle-radius': 6,
-'circle-stroke-width': 0,
-'circle-stroke-color': '#ffffff'
+	'circle-color': '#eb0e33',
+	'circle-radius': 6,
+	'circle-stroke-width': 0,
+	'circle-stroke-color': '#ffffff'
 }
 });
  
@@ -560,6 +526,7 @@ closeOnClick: false
 });
  
 map.on('mouseenter', 'places', (e) => {
+
 // Change the cursor style as a UI indicator.
 map.getCanvas().style.cursor = 'pointer';
  
@@ -586,39 +553,16 @@ popup.remove();
 });    
 	    
 	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-        
-    
-        
-         
- 
 const directions = new MapboxDirections({
         accessToken: mapboxgl.accessToken,
         unit: 'metric',
         profile: 'mapbox/walking',
         alternatives: true,
-	    container: 'map', // container id	
+	container: 'map', // container id	
         geometries: 'geojson',
         controls: { instructions: true },
         flyTo: true,
-	    preserveDrawingBuffer: true,	
+	preserveDrawingBuffer: true,	
         language: 'es'
 });
 
@@ -645,9 +589,8 @@ function resetRoute() {
     function mapLoadTimer() {
         if(map.getSource('directions')) {clearInterval(timerInterval);}
         if(!map.getSource('directions') && map.loaded()) {
-            console.log("Updating Map Directions");
-
-            map.addSource('directions', {
+            	console.log("Updating Map Directions");
+            	map.addSource('directions', {
                 type:'geojson',
                 data:{...routeData}
             });
@@ -749,8 +692,6 @@ function resetRoute() {
         }
             
             
-            
-        
   
     $('#downloadLink').click(function() {
         var img = map.getCanvas().toDataURL('image/png')
@@ -766,32 +707,7 @@ function resetRoute() {
   map.addControl(scale);
   
 });    
-        
-   
-      
-        
-        
-        
-        
-        
-        
-        
-        
-   
-        
-      
-        
- 
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+       
         
     function toggleSidebar(id) 
             {
@@ -799,7 +715,6 @@ function resetRoute() {
                 var elem = document.getElementById(id);
                 var classes = elem.className.split(' ');
                 var collapsed = classes.indexOf('collapsed') !== -1;
-  
                 var padding = {};
   
                 if ( collapsed ) 
@@ -839,28 +754,7 @@ function resetRoute() {
                 //toggleSidebar('left');
             });
   
-    
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-             
-            
-            
-            
-            
+   
 
         rainBg.addEventListener('click', () => {
             rainPickr.applyColor();
@@ -969,10 +863,6 @@ function resetRoute() {
   
         repeat();
        
-        
-
-        
-        
     </script>
 </body>
 </html>
