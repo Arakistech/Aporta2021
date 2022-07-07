@@ -217,19 +217,19 @@ header nav ul li a:hover {
 
 
 
-p:link {
+a:link {
   color: green;
   background-color: transparent;
   text-decoration: none;
 }
 
-p:visited {
+a:visited {
   color: pink;
   background-color: transparent;
   text-decoration: none;
 }
 
-p:hover {
+a:hover {
   color: red;
   background-color: transparent;
   text-decoration: underline;
