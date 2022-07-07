@@ -210,13 +210,12 @@
     const infoBg = document.getElementById('info-bg');
     const info = document.getElementById('info');
     let mapStyle = 'terrain';
-	//map.setStyle('mapbox://styles/iarakistain/cl4laf0x1001q14o9tgveyzzu'); 
+	
 	    
 	    
     mapboxgl.accessToken = 'pk.eyJ1IjoiaWFyYWtpc3RhaW4iLCJhIjoiY2t4NHBqNHd1MHRvaTJubnhodmxqdXhjbiJ9.T6OE8lXKHGCObadLCmIoqg';
     const map = new mapboxgl.Map({
         container: 'map',
-        // style: 'mapbox://styles/iarakistain/cl4laf0x1001q14o9tgveyzzu',
         style:'mapbox://styles/iarakistain/cl4x51czl004514oga1amzw1s',
         center:[-2.505511, 43.186665],
         pitch:40,
@@ -712,7 +711,7 @@ function resetRoute() {
             'terrain', 'streets-v11', 'outdoors-v11', 'light-v10', 'dark-v10', 
             'satellite-v9', 'satellite-streets-v11', 'dark-v10', 
             'iarakistain/cl4x51czl004514oga1amzw1s'
-            // , 'iarakistain/cl4laf0x1001q14o9tgveyzzu'
+            
         ];
 
         for (const style of styles) {
@@ -756,79 +755,7 @@ function resetRoute() {
     $('#downloadLink').click(function() {
         var img = map.getCanvas().toDataURL('image/png')
         this.href = img
-    })
-	    
-   
-
-/*	    
-	    
-	    
- let icon = document.getElementById('icon');
-icon.addEventListener('click', () => {
-	
-	
-	
-        // Insert the layer beneath any symbol layer.
-        const layers = map.getStyle().layers;
-        const labelLayerId = layers.find(
-            (layer) => layer.type === 'symbol' && layer.layout['text-field']
-        ).id;
-	   
-	   
-          map.addLayer(
-            {
-                'id': 'add-3d-buildings',
-                'source': 'composite',
-                'source-layer': 'building',
-                'filter': ['==', 'extrude', 'true'],
-                'type': 'fill-extrusion',
-                'minzoom': 15,
-                'paint': {
-                    'fill-extrusion-color': '#2218a7',
-                    // Use an 'interpolate' expression to
-                    // add a smooth transition effect to
-                    // the buildings as the user zooms in.
-                    'fill-extrusion-height': [
-                        'interpolate',
-                        ['linear'],
-                        ['zoom'],
-                        15,
-                        0,
-                        15.05,
-                        ['get', 'height']
-                    ],
-                    'fill-extrusion-base': [
-                        'interpolate',
-                        ['linear'],
-                        ['zoom'],
-                        15,
-                        0,
-                        15.05,
-                        ['get', 'min_height']
-                    ],
-                    'fill-extrusion-opacity': 0.8
-		   
-                }
-            },
-            labelLayerId
-        );
-	
-    });
-        
-        
-     */  
-   
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-            
+    });           
             
   map.on('load', function(){
   var scale = new mapboxgl.ScaleControl({
