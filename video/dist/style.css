@@ -215,6 +215,32 @@ header nav ul li a:hover {
   margin-bottom: 40px;
 }
 
+
+
+p:link {
+  color: green;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+p:visited {
+  color: pink;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+p:hover {
+  color: red;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+a:active {
+  color: yellow;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
 @-webkit-keyframes slideIn {
   from {
     filter: blur(15px);
