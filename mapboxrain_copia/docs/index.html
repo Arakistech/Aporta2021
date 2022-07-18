@@ -719,7 +719,15 @@ function resetRoute() {
             className: 'mapboxgl-ctrl-corazon',
             title: 'Cardioprotegido',
             eventHandler() {
-                mapStyleBg.style.display = 'block';
+                showMarkers = !showMarkers;
+
+                // toggle 
+                heartMarkers.forEach(marker => {
+                    if(showMarkers) {
+                        marker.addTo(map);
+                    } else {
+                        marker.remove();
+                    }
             }
 		
         },
