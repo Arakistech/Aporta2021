@@ -53,6 +53,7 @@
 <body>
     <div id="root">
         <div id="map">
+            <div class="video-toggler"></div>
              <div id="instructions"></div>
                 <div id="left" class="sidebar flex-center left collapsed">
                 <div class="sidebar-content rounded-rect flex-center">     <div id="title">
@@ -352,7 +353,7 @@
     });
         
             
-	    
+let videoMarkers, showMarkers=true;    
 map.on('load', () => {		
     map.addSource('places', {
     'type': 'geojson',
@@ -552,7 +553,6 @@ map.on('load', () => {
         }
     });
 
-
     // display the camera
     fetch('./Ubicaciones_Cameras_LatLong.json')
     .then(res => res.json())
@@ -560,7 +560,7 @@ map.on('load', () => {
         console.log(data);
 
         // create markers
-        let markers = data.features.map(ft => {
+        videoMarkers = data.features.map(ft => {
             let marker = createMarker(ft);
             return marker;
         });
@@ -578,12 +578,22 @@ map.on('load', () => {
 
         let camera = ft.properties.Direccion;
         let video = camera.replace("CAMERA", "Video");
+        
+        
+        let videos = {
+            Video1:"https://drive.google.com/file/d/17Q7k7IKNb_Yh0VaiQK98SGkgIFGy8WOB/preview",
+            Video2:"https://drive.google.com/file/d/1Xv3guL47QFgABrD0r8nFmQSnMUvsJQHW/preview",
+            Video3:"https://drive.google.com/file/d/1ZMo7pdfRe6tTMwDcxY0feTE3EmRdPJFH/preview",
+            Video4:"https://drive.google.com/file/d/1jgUz0h5uzI_Wh1wZjtxdSgXgRtac7baj/preview",
+            Video5:"https://drive.google.com/file/d/1j3BmGmN8xLC8XlUggatvjlRyN7Eafb85/preview",
+        };
 
+        // <video class="video" controls>
+        //         <source src="./assets/videos/${videos.video}.mp4" type="video/mp4">
+        //     </video>
         let popupContent = `<div class="popup-content">
             <h5>${ft.properties.Direccion}</h5>
-            <video class="video" controls>
-                <source src="./assets/videos/${video}.mp4" type="video/mp4">
-            </video>
+            <iframe src="${videos[video]}" class="video" allow="autoplay"></iframe>
         </div>`;
 
         let popup = new mapboxgl.Popup({focusAfterOpen:false}).setHTML(popupContent);
@@ -706,14 +716,26 @@ function resetRoute() {
             }
         }, 
 		
-	{className: 'mapboxgl-ctrl-home',
+	    {
+            className: 'mapboxgl-ctrl-home',
             title: 'Fly to home position',
             eventHandler() {
-		window.open('https://ermuaiot.com/mapboxrain_copia/docs/livecams/#16.18/43.187431/-2.503212/-43.5/52', "_blank");
-                deselectMarker();
-                cameraListElement.style.display = 'none';
-                map.flyTo({center: [31.685, 47.774], zoom: 5.5, bearing: 0, pitch: 45});
-                canvasElement.focus();
+                showMarkers = !showMarkers;
+
+                // toggle 
+                videoMarkers.forEach(marker => {
+                    if(showMarkers) {
+                        marker.addTo(map);
+                    } else {
+                        marker.remove();
+                    }
+                });
+
+		    // window.open('https://ermuaiot.com/mapboxrain_copia/docs/livecams/#16.18/43.187431/-2.503212/-43.5/52', "_blank");
+                // deselectMarker();
+                // cameraListElement.style.display = 'none';
+                // map.flyTo({center: [31.685, 47.774], zoom: 5.5, bearing: 0, pitch: 45});
+                // canvasElement.focus();
             }
 	},
 						  
