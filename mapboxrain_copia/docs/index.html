@@ -206,7 +206,7 @@
     mapboxgl.accessToken = 'pk.eyJ1IjoiaWFyYWtpc3RhaW4iLCJhIjoiY2t4NHBqNHd1MHRvaTJubnhodmxqdXhjbiJ9.T6OE8lXKHGCObadLCmIoqg';
     const map = new mapboxgl.Map({
         container: 'map',
-        style:'mapbox://styles/iarakistain/cl5pgiuko001y14ofde5t4jp6',
+        style:'mapbox://styles/iarakistain/cl4x51czl004514oga1amzw1s',
         center:[-2.505511, 43.186665],
         pitch:40,
         projection:'mercator',
@@ -353,7 +353,7 @@
     });
         
             
-let videoMarkers, showMarkers=true;    
+let videoMarkers, showMarkers=true, showDefibrilators=true;    
 map.on('load', () => {		
     map.addSource('places', {
     'type': 'geojson',
@@ -480,23 +480,34 @@ map.on('load', () => {
                     'type': 'Point',
                     'coordinates': [-2.5073466866, 43.1872155705]
                 }
+            },
+            {
+                'type': 'Feature',
+                'properties': {
+                    'description':
+                    "<strong>Seersucker Bike Ride and Social</strong><p>Feeling dandy? Get fancy, grab your bike, and take part in this year's Seersucker Social bike ride from Dandies and Quaintrelles. After the ride enjoy a lawn party at Hillwood with jazz, cocktails, paper hat-making, and more. 11:00-7:00 p.m.</p>"
+                },
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': [-77.007481, 38.876516]
+                }
             }]
         }
     });
         
         
     // Add a layer showing the places.
-    map.addLayer({
-        'id': 'places',
-        'type': 'circle',
-        'source': 'places',	
-        'paint': {
-            'circle-color': '#eb0e33',
-            'circle-radius': 6,
-            'circle-stroke-width': 0,
-            'circle-stroke-color': '#ffffff'
-        }
-    });
+    // map.addLayer({
+    //     'id': 'places',
+    //     'type': 'circle',
+    //     'source': 'places',	
+    //     'paint': {
+    //         'circle-color': '#eb0e33',
+    //         'circle-radius': 6,
+    //         'circle-stroke-width': 0,
+    //         'circle-stroke-color': '#ffffff'
+    //     }
+    // });
     
     // Create a popup, but don't add it to the map yet.
     const popup = new mapboxgl.Popup({
@@ -504,27 +515,32 @@ map.on('load', () => {
         closeOnClick: false
     });
     
-    map.on('mouseenter', 'places', (e) => {
+    map.on('mouseenter', 'defibrilators', (e) => {
         // Change the cursor style as a UI indicator.
         map.getCanvas().style.cursor = 'pointer';
         
         // Copy coordinates array.
         const coordinates = e.features[0].geometry.coordinates.slice();
-        const description = e.features[0].properties.description;
+        const description = `<strong>${e.features[0].properties.Organismo}</strong>
+            <p>${e.features[0].properties.Modelo}</p> 
+            <p>Horario: ${e.features[0].properties.Horario}h</p>
+        `;
         
         // Ensure that if the map is zoomed out such that multiple
         // copies of the feature are visible, the popup appears
         // over the copy being pointed to.
         while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
         }
         
         // Populate the popup and set its coordinates
         // based on the feature found.
+        console.log(e.features[0]);
+
         popup.setLngLat(coordinates).setHTML(description).addTo(map);
     });
     
-    map.on('mouseleave', 'places', () => {
+    map.on('mouseleave', 'defibrilators', () => {
         map.getCanvas().style.cursor = '';
             popup.remove();
     });
@@ -614,23 +630,18 @@ map.on('load', () => {
     }
 
     // accessibility control
+    
+});    
+
+function loadAccessibilityControl() {
+    let layers = (map.getLayer('poi-label') && map.getLayer('transit-label')) ? ['poi-label','transit-label'] : [];
     let accessibilityControl = new MapboxAccessibility({
-
-        // A string value representing a property key in the data. This
-        // will be used as the text in voiceover.
         accessibleLabelProperty: 'name',
-
-        // The layers within the style that
-        // 1. Contain the `accessibleLabelProperty` value as a key
-        // 2. Should be used for voiceover.
-        layers: [
-            'poi-label',
-            'transit-label'
-        ]
+        layers: [...layers]
     });
 
     map.addControl(accessibilityControl);
-});    
+}
 	    
 	    
 const directions = new MapboxDirections({
@@ -679,7 +690,11 @@ function resetRoute() {
             // directions.setOrigin(origin.geometry.coordinates);
             clearInterval(timerInterval);
         }
+
+        map.getLayer('defibrilators') ? "": addDefibrilators();
     }
+
+    
 }
 
     map.on('load', function() {
@@ -691,60 +706,63 @@ function resetRoute() {
     map.addControl(new mapboxgl.NavigationControl());
 	map.addControl(new MapboxTraffic());
     map.addControl(new mapboxgl.FullscreenControl({container: root}));
-        map.addControl(new MapboxGLButtonControl([{
-            className: 'mapboxgl-ctrl-map',
-            title: 'Map Style',
-            eventHandler() {
-                mapStyleBg.style.display = 'block';
-            }
-        }, {
-            className: 'mapboxgl-ctrl-rain',
-            title: 'Rain Color and Mesh Opacity',
-            eventHandler() {
-                rainBg.style.display = 'block';
-            }
-	}, 
-		{
-            className: 'mapboxgl-ctrl-corazon',
-            title: 'Cardioprotegido',
-            eventHandler() {
-                mapStyleBg.style.display = 'block';
-            }
-		
-        },
-		
-	    {
-            className: 'mapboxgl-ctrl-home',
-            title: 'Cámaras',
-            eventHandler() {
-                showMarkers = !showMarkers;
+        map.addControl(new MapboxGLButtonControl([
+            {
+                className: 'mapboxgl-ctrl-map',
+                title: 'Map Style',
+                eventHandler() {
+                    mapStyleBg.style.display = 'block';
+                }
+            }, 
+            {
+                className: 'mapboxgl-ctrl-rain',
+                title: 'Rain Color and Mesh Opacity',
+                eventHandler() {
+                    rainBg.style.display = 'block';
+                }
+            }, 
+            {
+                className: 'mapboxgl-ctrl-defibrilators',
+                title: 'Toggle defibrilators',
+                eventHandler() {
+                    showDefibrilators = !showDefibrilators;
+                    let visibilityStatus = showDefibrilators ? 'visible' : 'none';
 
-                // toggle 
-                videoMarkers.forEach(marker => {
-                    if(showMarkers) {
-                        marker.addTo(map);
-                    } else {
-                        marker.remove();
-                    }
-                });
+                    map.setLayoutProperty('defibrilators', 'visibility', visibilityStatus);
+                }
+            },
+		
+	        {
+                className: 'mapboxgl-ctrl-home',
+                title: 'Fly to home position',
+                eventHandler() {
+                    showMarkers = !showMarkers;
 
-		    // window.open('https://ermuaiot.com/mapboxrain_copia/docs/livecams/#16.18/43.187431/-2.503212/-43.5/52', "_blank");
-                // deselectMarker();
-                // cameraListElement.style.display = 'none';
-                // map.flyTo({center: [31.685, 47.774], zoom: 5.5, bearing: 0, pitch: 45});
-                // canvasElement.focus();
-            }
-	},
+                    // toggle 
+                    videoMarkers.forEach(marker => {
+                        if(showMarkers) {
+                            marker.addTo(map);
+                        } else {
+                            marker.remove();
+                        }
+                    });
+
+                // window.open('https://ermuaiot.com/mapboxrain_copia/docs/livecams/#16.18/43.187431/-2.503212/-43.5/52', "_blank");
+                    // deselectMarker();
+                    // cameraListElement.style.display = 'none';
+                    // map.flyTo({center: [31.685, 47.774], zoom: 5.5, bearing: 0, pitch: 45});
+                    // canvasElement.focus();
+                }
+	        },
 						  
-	{
-            className: 'mapboxgl-ctrl-info',
-            title: 'About Mapbox GL JS Rain Layer',
-            eventHandler() {
-                infoBg.style.display = 'block';
+	        {
+                className: 'mapboxgl-ctrl-info',
+                title: 'About Mapbox GL JS Rain Layer',
+                eventHandler() {
+                    infoBg.style.display = 'block';
+                }
             }
-		
-		
-        }]));
+        ]));
 
         mapStyleBg.addEventListener('click', () => {
             mapStyleBg.style.display = 'none';
@@ -845,8 +863,33 @@ function toggleSidebar(id) {
   
 map.on( 'load', function () {
     //toggleSidebar('left');
+    addDefibrilators();
 });
   
+// add defibrilators 
+function addDefibrilators() {
+    map.loadImage('/assets/images/desfib.png', (error, image) => {
+        if (error) throw error;
+        // Add the loaded image to the style's sprite with the ID 'kitten'.
+        map.addImage('defibrilators', image);
+    });
+
+    map.addSource('defibrilators', {
+        type:'geojson',
+        data:'Ubicaciones_Desfibriladores_LatLong.json'
+    });
+
+    map.addLayer({
+        id:'defibrilators',
+        source:'defibrilators',
+        type:'symbol',
+        paint:{},
+        layout:{
+            'icon-image':'defibrilators',
+            'icon-size':0.3
+        }
+    });
+}
    
 
 rainBg.addEventListener('click', () => {
