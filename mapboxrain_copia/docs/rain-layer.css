@@ -190,7 +190,7 @@ html, body {
 }
 
 .mapboxgl-ctrl button.mapboxgl-ctrl-defibrilators .mapboxgl-ctrl-icon {
-    background: no-repeat center/22px url("/assets/images/defibrilator.png");
+    background: no-repeat center/22px url("assets/images/defibrilator.png");
 }
 
 
