@@ -353,7 +353,7 @@
     });
         
             
-let videoMarkers, showMarkers=false, showDefibrilators=true;    
+let videoMarkers, showMarkers=true, showDefibrilators=false;    
 map.on('load', () => {		
     map.addSource('places', {
     'type': 'geojson',
@@ -734,6 +734,7 @@ function resetRoute() {
                 className: 'mapboxgl-ctrl-home',
                 title: 'Fly to home position',
                 eventHandler() {
+                    console.log("")
                     showMarkers = !showMarkers;
 
                     // toggle 
