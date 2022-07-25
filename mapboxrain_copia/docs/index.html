@@ -294,9 +294,9 @@
 
         var el = document.createElement('div');
         el.className = 'marker';
-        el.style.backgroundImage = 'url(https://imgur.com/0il4gMx.png)';
-        el.style.width = 80 + 'px';
-        el.style.height = 80 + 'px';
+        el.innerHTML = '<img src="assets/images/Ascensor.png" height="35px" style="width:38px;" />';
+        // el.style.width = 32 + 'px';
+        // el.style.height = 32 + 'px';
 
         var images = marker.properties.images
         var slideshowContent = ""
@@ -353,7 +353,7 @@
     });
         
             
-let videoMarkers, showMarkers=true, showDefibrilators=true;    
+let videoMarkers, showMarkers=false, showDefibrilators=true;    
 map.on('load', () => {		
     map.addSource('places', {
     'type': 'geojson',
@@ -535,8 +535,6 @@ map.on('load', () => {
         
         // Populate the popup and set its coordinates
         // based on the feature found.
-        console.log(e.features[0]);
-
         popup.setLngLat(coordinates).setHTML(description).addTo(map);
     });
     
@@ -886,7 +884,8 @@ function addDefibrilators() {
         paint:{},
         layout:{
             'icon-image':'defibrilators',
-            'icon-size':0.3
+            'icon-size':0.3,
+            'visibility':'none'
         }
     });
 }
