@@ -208,13 +208,13 @@
         container: 'map',
         style:'mapbox://styles/iarakistain/cl5guvut6006o14o1nl0ppe5u',
         center:[-2.505511, 43.186665],
-        pitch:40,
+        pitch: 40,
         projection:'mercator',
-        zoom:14,
+        zoom: 14,
         minZoom: 2,
         maxZoom: 18,
         hash: true,
-	    preserveDrawingBuffer: true,
+	preserveDrawingBuffer: true,
         language: 'es'
     });
           
@@ -251,12 +251,12 @@
                  
                  {
                      type: 'Feature',
-        "geometry": { "type": "Point", "coordinates": [-2.5069334182849867, 43.18786475703378] },
-        "properties": {
-          'title': 'Ascensor San Pelayo',
-          'marker-color': '#3c4e5a',
-          'marker-symbol': 'monument',
-          'marker-size': 'small',
+       			 "geometry": { "type": "Point", "coordinates": [-2.5069334182849867, 43.18786475703378] },
+       			 "properties": {
+         			 'title': 'Ascensor San Pelayo',
+          			 'marker-color': '#3c4e5a',
+         			 'marker-symbol': 'monument',
+        		         'marker-size': 'small',
 
           // Store the image url and caption in an array.
           'images': [
@@ -266,9 +266,7 @@
           ]
         }
       },
-                 
-           
-                 
+                           
                  {
                      type: 'Feature',
         "geometry": { "type": "Point", "coordinates": [-2.5069334182849867, 43.18786475703378] },
@@ -493,11 +491,7 @@ map.on('load', () => {
             }]
         }
     });
-        	    
-	    
-	    
-
-        
+        	   
     
     // Create a popup, but don't add it to the map yet.
     const popup = new mapboxgl.Popup({
@@ -513,19 +507,20 @@ map.on('load', () => {
         const coordinates = e.features[0].geometry.coordinates.slice();
         const description = `<strong>${e.features[0].properties.Organismo}</strong>
             <p>${e.features[0].properties.Modelo}</p> 
-            <p>Horario: ${e.features[0].properties.Horario}h</p>
-        `;
+            <p>Horario: ${e.features[0].properties.Horario}h</p>`;
         
         // Ensure that if the map is zoomed out such that multiple
         // copies of the feature are visible, the popup appears
         // over the copy being pointed to.
-        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        
+	    while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+            	coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
         }
         
         // Populate the popup and set its coordinates
         // based on the feature found.
-        popup.setLngLat(coordinates).setHTML(description).addTo(map);
+        	
+	    	popup.setLngLat(coordinates).setHTML(description).addTo(map);
     });
     
     map.on('mouseleave', 'defibrilators', () => {
