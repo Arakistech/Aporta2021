@@ -11,7 +11,7 @@
 			},
 			"properties" : {
 				"fid" : "13",
-				"Organismo" : "RAMPA",
+				"Elemento" : "RAMPA",  
 				"Direccion" : "ONGARAI1",
 				"Municipio" : "Ermua",
 				"Estado" : "EN MARCHA",
@@ -30,7 +30,7 @@
 			},
 			"properties" : {
 				"fid" : "13",
-				"Organismo" : "RAMPA",
+				"Elemento" : "RAMPA",
 				"Direccion" : "ONGARAI2",
 				"Municipio" : "Ermua",
 				"Estado" : "EN MARCHA",
@@ -49,7 +49,7 @@
 			},
 			"properties" : {
 				"fid" : "13",
-				"Organismo" : "RAMPA",
+				"Elemento" : "RAMPA",
 				"Direccion" : "ONGARAI3",
 				"Municipio" : "Ermua",
 				"Estado" : "EN MARCHA",
@@ -68,7 +68,7 @@
 			},
 			"properties" : {
 				"fid" : "13",
-				"Organismo" : "RAMPA",
+				"Elemento" : "RAMPA",
 				"Direccion" : "ONGARAI4",
 				"Municipio" : "Ermua",
 				"Estado" : "EN MARCHA",
@@ -87,7 +87,7 @@
 			},
 			"properties" : {
 				"fid" : "13",
-				"Organismo" : "RAMPA",
+				"Elemento" : "RAMPA",
 				"Direccion" : "ZERUKOA1",
 				"Municipio" : "Ermua",
 				"Estado" : "EN MARCHA",
@@ -106,7 +106,7 @@
 			},
 			"properties" : {
 				"fid" : "13",
-				"Organismo" : "RAMPA",
+				"Elemento" : "RAMPA",
 				"Direccion" : "ZERUKOA2",
 				"Municipio" : "Ermua",
 				"Estado" : "EN MARCHA",
@@ -125,7 +125,7 @@
 			},
 			"properties" : {
 				"fid" : "13",
-				"Organismo" : "RAMPA",
+				"Elemento" : "RAMPA",
 				"Direccion" : "LOBIANO",
 				"Municipio" : "Ermua",
 				"Estado" : "EN MARCHA",
@@ -144,7 +144,7 @@
 			},
 			"properties" : {
 				"fid" : "13",
-				"Organismo" : "RAMPA",
+				"Elemento" : "RAMPA",
 				"Direccion" : "IPARRAGUIRRE",
 				"Municipio" : "Ermua",
 				"Estado" : "EN MARCHA",
@@ -164,7 +164,7 @@
 			},
 			"properties" : {
 				"fid" : "14",
-				"Organismo" : "RAMPA",
+				"Elemento" : "RAMPA",
 				"Direccion" : "PLAZA",
 				"Estado" : "EN MARCHA",
 				"codigo_dea" : 0,
