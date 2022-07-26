@@ -12,7 +12,7 @@
 			"properties" : {
 				"fid" : "1",
 				"Organismo" : "A8",
-				"Direccion" : "CAMERA1",
+				"Direccion" : "CÁMARA 1 (AP8)",
 				"Municipio" : "Ermua",
 				"Provincia" : "Bizkaia",
 				"codigo_dea" : 878,
@@ -32,7 +32,7 @@
 			"properties" : {
 				"fid" : "13",
 				"Organismo" : "A8",
-				"Direccion" : "CAMERA2",
+				"Direccion" : "CÁMARA 2 (AP8)",
 				"Municipio" : "Ermua",
 				"Provincia" : "Bizkaia",
 				"codigo_dea" : 2026,
@@ -52,7 +52,7 @@
 			"properties" : {
 				"fid" : "13",
 				"Organismo" : "N634",
-				"Direccion" : "CAMERA3",
+				"Direccion" : "CÁMARA 3 (Onda verde)",
 				"Municipio" : "Ermua",
 				"Provincia" : "Bizkaia",
 				"codigo_dea" : 2026,
@@ -71,7 +71,7 @@
 			"properties" : {
 				"fid" : "13",
 				"Organismo" : "N634",
-				"Direccion" : "CAMERA4",
+				"Direccion" : "CÁMARA 4 (Onda verde)",
 				"Municipio" : "Ermua",
 				"Provincia" : "Bizkaia",
 				"codigo_dea" : 2026,
@@ -91,7 +91,7 @@
 			"properties" : {
 				"fid" : "14",
 				"Organismo" : "BICI MONTAÑA",
-				"Direccion" : "CAMERA5",
+				"Direccion" : "CÁMARA 5 (Bicicleta de montaña)",
 				"codigo_dea" : 0,
 				"EsMunicipa" : "NO",
 				"buffer" : 200,
