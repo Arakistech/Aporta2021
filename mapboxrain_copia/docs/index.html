@@ -83,7 +83,7 @@
             <div id="map-styles">
                 <div id="iarakistain/cl5guvut6006o14o1nl0ppe5u"><span></span>Medios Accesibles</div>
                 <div id="iarakistain/cl4x51czl004514oga1amzw1s" class="active"><span></span>Cardioprotección</div> 
-		        <div id="iarakistain/cl5gil0ym006614o1gkrym5ke"><span></span>Sensores Aire</div>
+		<div id="iarakistain/cl5gil0ym006614o1gkrym5ke"><span></span>Sensores Aire</div>
                 <div id="terrain" ><span></span>Terreno 3D</div>
                 <div id="streets-v11"><span></span>Calles</div>
                 <div id="outdoors-v11"><span></span>Topográfico</div>
@@ -295,9 +295,7 @@
         var el = document.createElement('div');
         el.className = 'marker';
         el.innerHTML = '<img src="assets/images/Ascensor.png" height="35px" style="width:38px;" />';
-        // el.style.width = 32 + 'px';
-        // el.style.height = 32 + 'px';
-
+       
         var images = marker.properties.images
         var slideshowContent = ""
 
@@ -496,18 +494,6 @@ map.on('load', () => {
     });
         
         
-    // Add a layer showing the places.
-    // map.addLayer({
-    //     'id': 'places',
-    //     'type': 'circle',
-    //     'source': 'places',	
-    //     'paint': {
-    //         'circle-color': '#eb0e33',
-    //         'circle-radius': 6,
-    //         'circle-stroke-width': 0,
-    //         'circle-stroke-color': '#ffffff'
-    //     }
-    // });
     
     // Create a popup, but don't add it to the map yet.
     const popup = new mapboxgl.Popup({
@@ -577,8 +563,6 @@ map.on('load', () => {
         markerDiv.className = 'livecam-marker';
 
         let mapMarker = new mapboxgl.Marker({element:markerDiv});
-        // markerDiv.
-
         let camera = ft.properties.Direccion;
         let video = camera.replace("CAMERA", "Video");
         
@@ -591,9 +575,7 @@ map.on('load', () => {
             Video5:"https://drive.google.com/file/d/1j3BmGmN8xLC8XlUggatvjlRyN7Eafb85/preview",
         };
 
-        // <video class="video" controls>
-        //         <source src="./assets/videos/${videos.video}.mp4" type="video/mp4">
-        //     </video>
+       
         let popupContent = `<div class="popup-content">
             <h5>${ft.properties.Direccion}</h5>
             <iframe src="${videos[video]}" class="video" allow="autoplay"></iframe>
@@ -745,13 +727,8 @@ function resetRoute() {
                             marker.remove();
                         }
                     });
-
-                // window.open('https://ermuaiot.com/mapboxrain_copia/docs/livecams/#16.18/43.187431/-2.503212/-43.5/52', "_blank");
-                    // deselectMarker();
-                    // cameraListElement.style.display = 'none';
-                    // map.flyTo({center: [31.685, 47.774], zoom: 5.5, bearing: 0, pitch: 45});
-                    // canvasElement.focus();
-                }
+               
+                	}
 	        },
 						  
 	        {
