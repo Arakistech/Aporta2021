@@ -83,7 +83,7 @@
             <div id="map-styles">
                 <div id="iarakistain/cl5guvut6006o14o1nl0ppe5u"><span></span>Medios Accesibles</div>
                 <div id="iarakistain/cl4x51czl004514oga1amzw1s" class="active"><span></span>Cardioprotección</div> 
-		<div id="iarakistain/cl5gil0ym006614o1gkrym5ke"><span></span>Sensores Aire</div>
+		        <div id="iarakistain/cl5gil0ym006614o1gkrym5ke"><span></span>Sensores Aire</div>
                 <div id="terrain" ><span></span>Terreno 3D</div>
                 <div id="streets-v11"><span></span>Calles</div>
                 <div id="outdoors-v11"><span></span>Topográfico</div>
@@ -206,15 +206,15 @@
     mapboxgl.accessToken = 'pk.eyJ1IjoiaWFyYWtpc3RhaW4iLCJhIjoiY2t4NHBqNHd1MHRvaTJubnhodmxqdXhjbiJ9.T6OE8lXKHGCObadLCmIoqg';
     const map = new mapboxgl.Map({
         container: 'map',
-        style:'mapbox://styles/iarakistain/cl5guvut6006o14o1nl0ppe5u',
+        style:'mapbox://styles/iarakistain/cl4x51czl004514oga1amzw1s',
         center:[-2.505511, 43.186665],
-        pitch: 40,
+        pitch:40,
         projection:'mercator',
-        zoom: 14,
+        zoom:14,
         minZoom: 2,
         maxZoom: 18,
         hash: true,
-	preserveDrawingBuffer: true,
+	    preserveDrawingBuffer: true,
         language: 'es'
     });
           
@@ -251,12 +251,12 @@
                  
                  {
                      type: 'Feature',
-       			 "geometry": { "type": "Point", "coordinates": [-2.5069334182849867, 43.18786475703378] },
-       			 "properties": {
-         			 'title': 'Ascensor San Pelayo',
-          			 'marker-color': '#3c4e5a',
-         			 'marker-symbol': 'monument',
-        		         'marker-size': 'small',
+        "geometry": { "type": "Point", "coordinates": [-2.5069334182849867, 43.18786475703378] },
+        "properties": {
+          'title': 'Ascensor San Pelayo',
+          'marker-color': '#3c4e5a',
+          'marker-symbol': 'monument',
+          'marker-size': 'small',
 
           // Store the image url and caption in an array.
           'images': [
@@ -266,7 +266,9 @@
           ]
         }
       },
-                           
+                 
+           
+                 
                  {
                      type: 'Feature',
         "geometry": { "type": "Point", "coordinates": [-2.5069334182849867, 43.18786475703378] },
@@ -293,7 +295,9 @@
         var el = document.createElement('div');
         el.className = 'marker';
         el.innerHTML = '<img src="assets/images/Ascensor.png" height="35px" style="width:38px;" />';
-       
+        // el.style.width = 32 + 'px';
+        // el.style.height = 32 + 'px';
+
         var images = marker.properties.images
         var slideshowContent = ""
 
@@ -350,7 +354,6 @@
         
             
 let videoMarkers, showMarkers=true, showDefibrilators=false;    
-	    
 map.on('load', () => {		
     map.addSource('places', {
     'type': 'geojson',
@@ -491,7 +494,20 @@ map.on('load', () => {
             }]
         }
     });
-        	   
+        
+        
+    // Add a layer showing the places.
+    // map.addLayer({
+    //     'id': 'places',
+    //     'type': 'circle',
+    //     'source': 'places',	
+    //     'paint': {
+    //         'circle-color': '#eb0e33',
+    //         'circle-radius': 6,
+    //         'circle-stroke-width': 0,
+    //         'circle-stroke-color': '#ffffff'
+    //     }
+    // });
     
     // Create a popup, but don't add it to the map yet.
     const popup = new mapboxgl.Popup({
@@ -507,20 +523,19 @@ map.on('load', () => {
         const coordinates = e.features[0].geometry.coordinates.slice();
         const description = `<strong>${e.features[0].properties.Organismo}</strong>
             <p>${e.features[0].properties.Modelo}</p> 
-            <p>Horario: ${e.features[0].properties.Horario}h</p>`;
+            <p>Horario: ${e.features[0].properties.Horario}h</p>
+        `;
         
         // Ensure that if the map is zoomed out such that multiple
         // copies of the feature are visible, the popup appears
         // over the copy being pointed to.
-        
-	    while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-            	coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
         }
         
         // Populate the popup and set its coordinates
         // based on the feature found.
-        	
-	    	popup.setLngLat(coordinates).setHTML(description).addTo(map);
+        popup.setLngLat(coordinates).setHTML(description).addTo(map);
     });
     
     map.on('mouseleave', 'defibrilators', () => {
@@ -528,6 +543,41 @@ map.on('load', () => {
             popup.remove();
     });
 
+    // escalator and elevetors 
+    map.on('mouseenter', 'ascensores', handleMouseEnter);
+    map.on('mouseenter', 'rampas', handleMouseEnter);
+
+    map.on('mouseleave', 'ascensores', handleMouseLeave);
+    map.on('mouseleave', 'rampas', handleMouseLeave);
+
+    function handleMouseEnter(e) {
+        map.getCanvas().style.cursor = 'pointer';
+        
+        // Copy coordinates array.
+        const coordinates = e.features[0].geometry.coordinates.slice();
+        const description = `<div class="popup-content">
+            <p>Direccion: ${e.features[0].properties.Direccion}</p> 
+            <p>ELemento: ${e.features[0].properties['Elemento'] || ""}</p> 
+            <p>Estado: ${e.features[0].properties['Estado'] || ""}</p>
+        </div>
+        `;
+        
+        // Ensure that if the map is zoomed out such that multiple
+        // copies of the feature are visible, the popup appears
+        // over the copy being pointed to.
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        }
+        
+        // Populate the popup and set its coordinates
+        // based on the feature found.
+        popup.setLngLat(coordinates).setHTML(description).addTo(map);
+    }
+
+    function handleMouseLeave(e) {
+        map.getCanvas().style.cursor = '';
+            popup.remove();
+    }
 
     map.on('zoomend', function(e) {
         let zoom = map.getZoom();
@@ -562,8 +612,10 @@ map.on('load', () => {
         markerDiv.className = 'livecam-marker';
 
         let mapMarker = new mapboxgl.Marker({element:markerDiv});
+        // markerDiv.
+
         let camera = ft.properties.Direccion;
-        let video = camera.replace("CÁMARA", "Video");
+        let video = camera.replace("CAMERA", "Video");
         
         
         let videos = {
@@ -574,7 +626,9 @@ map.on('load', () => {
             Video5:"https://drive.google.com/file/d/1j3BmGmN8xLC8XlUggatvjlRyN7Eafb85/preview",
         };
 
-       
+        // <video class="video" controls>
+        //         <source src="./assets/videos/${videos.video}.mp4" type="video/mp4">
+        //     </video>
         let popupContent = `<div class="popup-content">
             <h5>${ft.properties.Direccion}</h5>
             <iframe src="${videos[video]}" class="video" allow="autoplay"></iframe>
@@ -726,8 +780,13 @@ function resetRoute() {
                             marker.remove();
                         }
                     });
-               
-                	}
+
+                // window.open('https://ermuaiot.com/mapboxrain_copia/docs/livecams/#16.18/43.187431/-2.503212/-43.5/52', "_blank");
+                    // deselectMarker();
+                    // cameraListElement.style.display = 'none';
+                    // map.flyTo({center: [31.685, 47.774], zoom: 5.5, bearing: 0, pitch: 45});
+                    // canvasElement.focus();
+                }
 	        },
 						  
 	        {

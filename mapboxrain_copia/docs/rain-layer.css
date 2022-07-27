@@ -311,6 +311,10 @@ html, body {
       float: right;
     }
 
+.popup-content p {
+    margin: 0;
+}
+
 .livecam-marker {
     width: 40px;
     height: 40px;
