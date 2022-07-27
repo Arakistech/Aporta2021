@@ -12,7 +12,7 @@
 			"properties" : {
 				"fid" : "1",
 				"Organismo" : "A8",
-				"Direccion" : "CÁMARA1",
+				"Direccion" : "CAMERA1",
 				"Municipio" : "Ermua",
 				"Provincia" : "Bizkaia",
 				"codigo_dea" : 878,
@@ -32,7 +32,7 @@
 			"properties" : {
 				"fid" : "13",
 				"Organismo" : "A8",
-				"Direccion" : "CÁMARA2",
+				"Direccion" : "CAMERA2",
 				"Municipio" : "Ermua",
 				"Provincia" : "Bizkaia",
 				"codigo_dea" : 2026,
@@ -46,39 +46,39 @@
 			"type" : "Feature",
 			"geometry" : {
 				"type" : "Point",
-				"coordinates" : [ -2.498731257346263,  43.18108440835767 ]   
+				"coordinates" : [ -2.5041546847941683,  43.18623590584765 ]   
  
 			},
 			"properties" : {
 				"fid" : "13",
 				"Organismo" : "N634",
-				"Direccion" : "CÁMARA3",
+				"Direccion" : "CAMERA3",
 				"Municipio" : "Ermua",
 				"Provincia" : "Bizkaia",
 				"codigo_dea" : 2026,
 				"EsMunicipa" : "NO",
 				"buffer" : 200,
-				"x" : -2.498731257346263,
-				"y" : 43.18108440835767
+				"x" : -2.5041546847941683,
+				"y" : 43.18623590584765
 			}
 		},
 		{
 			"type" : "Feature",
 			"geometry" : {
 				"type" : "Point",
-				"coordinates" : [ -2.504095675299931, 43.186185057953665 ]    
+				"coordinates" : [ -2.5041546847941683, 43.18623590584765 ]    
 			},
 			"properties" : {
 				"fid" : "13",
 				"Organismo" : "N634",
-				"Direccion" : "CÁMARA4",
+				"Direccion" : "CAMERA4",
 				"Municipio" : "Ermua",
 				"Provincia" : "Bizkaia",
 				"codigo_dea" : 2026,
 				"EsMunicipa" : "NO",
 				"buffer" : 200,
-				"x" : -2.504095675299931,
-				"y" : 43.186185057953665
+				"x" : -2.5041546847941683,
+				"y" : 43.18623590584765
 			}
 		},
 		{
@@ -91,7 +91,7 @@
 			"properties" : {
 				"fid" : "14",
 				"Organismo" : "BICI MONTAÑA",
-				"Direccion" : "CÁMARA5",
+				"Direccion" : "CAMERA5",
 				"codigo_dea" : 0,
 				"EsMunicipa" : "NO",
 				"buffer" : 200,
