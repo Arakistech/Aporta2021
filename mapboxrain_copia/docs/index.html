@@ -495,19 +495,6 @@ map.on('load', () => {
         }
     });
         
-        
-    // Add a layer showing the places.
-    // map.addLayer({
-    //     'id': 'places',
-    //     'type': 'circle',
-    //     'source': 'places',	
-    //     'paint': {
-    //         'circle-color': '#eb0e33',
-    //         'circle-radius': 6,
-    //         'circle-stroke-width': 0,
-    //         'circle-stroke-color': '#ffffff'
-    //     }
-    // });
     
     // Create a popup, but don't add it to the map yet.
     const popup = new mapboxgl.Popup({
@@ -557,7 +544,7 @@ map.on('load', () => {
         const coordinates = e.features[0].geometry.coordinates.slice();
         const description = `<div class="popup-content">
             <p>Direccion: ${e.features[0].properties.Direccion}</p> 
-            <p>ELemento: ${e.features[0].properties['Elemento'] || ""}</p> 
+            <p>Elemento: ${e.features[0].properties['Elemento'] || ""}</p> 
             <p>Estado: ${e.features[0].properties['Estado'] || ""}</p>
         </div>
         `;
