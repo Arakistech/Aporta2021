@@ -531,7 +531,7 @@ map.on('load', () => {
             popup.remove();
     });	 
 
-    // escalator and elevetors 
+    // escalator and elevators 
     map.on('mouseenter', 'ascensores', handleMouseEnter);
     map.on('mouseenter', 'rampas', handleMouseEnter);
 
@@ -545,11 +545,10 @@ map.on('load', () => {
         const coordinates = e.features[0].geometry.coordinates.slice();
 	const description = `<strong>${e.features[0].properties.Direccion}</strong>
             <p>${e.features[0].properties.Elemento}</p> 
-            <p>Estado: ${e.features[0].properties.Estado}h</p>
+            <p>Horario ${e.features[0].properties.Horario}h</p>
         `;    
 	    
 	 
-        
         // Ensure that if the map is zoomed out such that multiple
         // copies of the feature are visible, the popup appears
         // over the copy being pointed to.
