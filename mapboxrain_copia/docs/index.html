@@ -205,7 +205,7 @@
     mapboxgl.accessToken = 'pk.eyJ1IjoiaWFyYWtpc3RhaW4iLCJhIjoiY2t4NHBqNHd1MHRvaTJubnhodmxqdXhjbiJ9.T6OE8lXKHGCObadLCmIoqg';
     const map = new mapboxgl.Map({
         container: 'map',
-        style:'mapbox://styles/iarakistain/cl4x51czl004514oga1amzw1s',
+        style:'mapbox://styles/iarakistain/cl5guvut6006o14o1nl0ppe5u',
         center:[-2.505511, 43.186665],
         pitch:40,
         projection:'mercator',
@@ -213,7 +213,7 @@
         minZoom: 2,
         maxZoom: 18,
         hash: true,
-	    preserveDrawingBuffer: true,
+	preserveDrawingBuffer: true,
         language: 'es'
     });
           
@@ -514,7 +514,20 @@ map.on('load', () => {
         closeOnClick: false
     });
     
-    map.on('mouseenter', 'defibrilators', handleMouseEnter);
+	
+	 map.on('mouseenter', 'defibrilators', (e) => {
+        // Change the cursor style as a UI indicator.
+        map.getCanvas().style.cursor = 'pointer';
+        
+        // Copy coordinates array.
+        const coordinates = e.features[0].geometry.coordinates.slice();
+        const description = `<strong>${e.features[0].properties.Organismo}</strong>
+            <p>${e.features[0].properties.Modelo}</p> 
+            <p>Horario: ${e.features[0].properties.Horario}h</p>
+        `;
+	
+	
+    //map.on('mouseenter', 'defibrilators', handleMouseEnter);
     
     // map.on('mouseenter', 'defibrilators', (e) => {
     //     // Change the cursor style as a UI indicator.
