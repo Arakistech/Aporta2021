@@ -494,19 +494,6 @@ map.on('load', () => {
         }
     });
         
-        
-    // Add a layer showing the places.
-    // map.addLayer({
-    //     'id': 'places',
-    //     'type': 'circle',
-    //     'source': 'places',	
-    //     'paint': {
-    //         'circle-color': '#eb0e33',
-    //         'circle-radius': 6,
-    //         'circle-stroke-width': 0,
-    //         'circle-stroke-color': '#ffffff'
-    //     }
-    // });
     
     // Create a popup, but don't add it to the map yet.
     const popup = new mapboxgl.Popup({
@@ -543,41 +530,6 @@ map.on('load', () => {
         map.getCanvas().style.cursor = '';
             popup.remove();
     });	 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-    //map.on('mouseenter', 'defibrilators', handleMouseEnter);
-    
-    // map.on('mouseenter', 'defibrilators', (e) => {
-    //     // Change the cursor style as a UI indicator.
-    //     map.getCanvas().style.cursor = 'pointer';
-        
-    //     // Copy coordinates array.
-    //     const coordinates = e.features[0].geometry.coordinates.slice();
-    //     const description = `<strong>${e.features[0].properties.Organismo}</strong>
-    //         <p>${e.features[0].properties.Modelo}</p> 
-    //         <p>Horario: ${e.features[0].properties.Horario}h</p>`;
-
-    //     while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-    //         coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-    //     }
-        
-    //     popup.setLngLat(coordinates).setHTML(description).addTo(map);
-    // });
-    
-   // map.on('mouseleave', 'defibrilators', () => {
-   //     map.getCanvas().style.cursor = '';
-   //         popup.remove();
-   // });
 
     // escalator and elevetors 
     map.on('mouseenter', 'ascensores', handleMouseEnter);
@@ -592,8 +544,8 @@ map.on('load', () => {
         // Copy coordinates array.
         const coordinates = e.features[0].geometry.coordinates.slice();
         const description = `<div class="popup-content">
-            <p>Direccion: ${e.features[0].properties.Direccion}</p> 
-            <p>ELemento: ${e.features[0].properties['Elemento'] || ""}</p> 
+            <p>Direccion:<strong>${e.features[0].properties.Direccion}</strong></p> 
+            <p>Elemento: ${e.features[0].properties['Elemento'] || ""}</p> 
             <p>Estado: ${e.features[0].properties['Estado'] || ""}</p>
         </div>
         `;
