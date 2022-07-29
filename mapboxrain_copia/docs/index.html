@@ -544,7 +544,7 @@ map.on('load', () => {
         // Copy coordinates array.
         const coordinates = e.features[0].geometry.coordinates.slice();
         const description = `<div class="popup-content">
-            <p>Direccion:<strong>${e.features[0].properties.Direccion}</strong></p> 
+            <p><strong>${e.features[0].properties.Direccion}</strong></p> 
             <p>Elemento: ${e.features[0].properties['Elemento'] || ""}</p> 
             <p>Estado: ${e.features[0].properties['Estado'] || ""}</p>
         </div>
