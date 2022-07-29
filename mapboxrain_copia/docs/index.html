@@ -83,15 +83,14 @@
             <div id="map-styles">
                 <div id="iarakistain/cl5guvut6006o14o1nl0ppe5u"><span></span>Medios Accesibles</div>
                 <div id="iarakistain/cl4x51czl004514oga1amzw1s" class="active"><span></span>Cardioprotección</div> 
-		<div id="iarakistain/cl5gil0ym006614o1gkrym5ke"><span></span>Sensores Aire</div>
+		        <div id="iarakistain/cl5gil0ym006614o1gkrym5ke"><span></span>Sensores Aire</div>
                 <div id="terrain" ><span></span>Terreno 3D</div>
-                <div id="streets-v11"><span></span>Calles</div>
-                <div id="outdoors-v11"><span></span>Topográfico</div>
-                <div id="light-v10"><span></span>Claro</div>
-                <div id="dark-v10"><span></span>Oscuro</div>
+                <div id="iarakistain/cl65j5le2000z14tipe3hsnuy"><span></span>Calles</div>
+                <div id="iarakistain/cl65izeqo000x14ti16nbcx42"><span></span>Topográfico</div>
+                <div id="iarakistain/cl65iqpnc003114n3awqprzvs"><span></span>Claro</div>
+                <div id="iarakistain/cl65i9s4g000q15oxdwsvktsv"><span></span>Oscuro</div>
             </div>
         </div>
-             
         
         <div id="rain-bg">
             <div id="rain">
@@ -206,7 +205,7 @@
     mapboxgl.accessToken = 'pk.eyJ1IjoiaWFyYWtpc3RhaW4iLCJhIjoiY2t4NHBqNHd1MHRvaTJubnhodmxqdXhjbiJ9.T6OE8lXKHGCObadLCmIoqg';
     const map = new mapboxgl.Map({
         container: 'map',
-        style:'mapbox://styles/iarakistain/cl5guvut6006o14o1nl0ppe5u',
+        style:'mapbox://styles/iarakistain/cl4x51czl004514oga1amzw1s',
         center:[-2.505511, 43.186665],
         pitch:40,
         projection:'mercator',
@@ -214,13 +213,13 @@
         minZoom: 2,
         maxZoom: 18,
         hash: true,
-	preserveDrawingBuffer: true,
+	    preserveDrawingBuffer: true,
         language: 'es'
     });
           
     var popup = new mapboxgl.Popup({
         closeButton: false,
-        closeOnClick: false
+        closeOnClick: true
     });
 
     const rainLayer = new RainLayer({
@@ -495,6 +494,19 @@ map.on('load', () => {
         }
     });
         
+        
+    // Add a layer showing the places.
+    // map.addLayer({
+    //     'id': 'places',
+    //     'type': 'circle',
+    //     'source': 'places',	
+    //     'paint': {
+    //         'circle-color': '#eb0e33',
+    //         'circle-radius': 6,
+    //         'circle-stroke-width': 0,
+    //         'circle-stroke-color': '#ffffff'
+    //     }
+    // });
     
     // Create a popup, but don't add it to the map yet.
     const popup = new mapboxgl.Popup({
@@ -502,28 +514,24 @@ map.on('load', () => {
         closeOnClick: false
     });
     
-    map.on('mouseenter', 'defibrilators', (e) => {
-        // Change the cursor style as a UI indicator.
-        map.getCanvas().style.cursor = 'pointer';
+    map.on('mouseenter', 'defibrilators', handleMouseEnter);
+    
+    // map.on('mouseenter', 'defibrilators', (e) => {
+    //     // Change the cursor style as a UI indicator.
+    //     map.getCanvas().style.cursor = 'pointer';
         
-        // Copy coordinates array.
-        const coordinates = e.features[0].geometry.coordinates.slice();
-        const description = `<strong>${e.features[0].properties.Organismo}</strong>
-            <p>${e.features[0].properties.Modelo}</p> 
-            <p>Horario: ${e.features[0].properties.Horario}h</p>
-        `;
+    //     // Copy coordinates array.
+    //     const coordinates = e.features[0].geometry.coordinates.slice();
+    //     const description = `<strong>${e.features[0].properties.Organismo}</strong>
+    //         <p>${e.features[0].properties.Modelo}</p> 
+    //         <p>Horario: ${e.features[0].properties.Horario}h</p>`;
+
+    //     while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+    //         coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+    //     }
         
-        // Ensure that if the map is zoomed out such that multiple
-        // copies of the feature are visible, the popup appears
-        // over the copy being pointed to.
-        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-        }
-        
-        // Populate the popup and set its coordinates
-        // based on the feature found.
-        popup.setLngLat(coordinates).setHTML(description).addTo(map);
-    });
+    //     popup.setLngLat(coordinates).setHTML(description).addTo(map);
+    // });
     
     map.on('mouseleave', 'defibrilators', () => {
         map.getCanvas().style.cursor = '';
@@ -544,7 +552,7 @@ map.on('load', () => {
         const coordinates = e.features[0].geometry.coordinates.slice();
         const description = `<div class="popup-content">
             <p>Direccion: ${e.features[0].properties.Direccion}</p> 
-            <p>Elemento: ${e.features[0].properties.Elemento}</p> 
+            <p>ELemento: ${e.features[0].properties['Elemento'] || ""}</p> 
             <p>Estado: ${e.features[0].properties['Estado'] || ""}</p>
         </div>
         `;
@@ -558,13 +566,15 @@ map.on('load', () => {
         
         // Populate the popup and set its coordinates
         // based on the feature found.
-            popup.setLngLat(coordinates).setHTML(description).addTo(map);
+        popup.setLngLat(coordinates).setHTML(description).addTo(map);
     }
 
     function handleMouseLeave(e) {
         map.getCanvas().style.cursor = '';
-            popup.remove();
+        
+        popup.remove();
     }
+
 
     map.on('zoomend', function(e) {
         let zoom = map.getZoom();
@@ -669,11 +679,11 @@ const directions = new MapboxDirections({
         unit: 'metric',
         profile: 'mapbox/walking',
         alternatives: true,
-	container: 'map', // container id	
+	    container: 'map', // container id	
         geometries: 'geojson',
         controls: { instructions: true },
         flyTo: true,
-	preserveDrawingBuffer: true,	
+	    preserveDrawingBuffer: true,	
         language: 'es'
 });
 
@@ -724,9 +734,9 @@ function resetRoute() {
 
     map.scrollZoom.enable();
     map.addControl(new mapboxgl.NavigationControl());
-    map.addControl(new MapboxTraffic());
+	map.addControl(new MapboxTraffic());
     map.addControl(new mapboxgl.FullscreenControl({container: root}));
-    map.addControl(new MapboxGLButtonControl([
+        map.addControl(new MapboxGLButtonControl([
             {
                 className: 'mapboxgl-ctrl-map',
                 title: 'Map Style',
@@ -768,7 +778,12 @@ function resetRoute() {
                         }
                     });
 
-                	}
+                // window.open('https://ermuaiot.com/mapboxrain_copia/docs/livecams/#16.18/43.187431/-2.503212/-43.5/52', "_blank");
+                    // deselectMarker();
+                    // cameraListElement.style.display = 'none';
+                    // map.flyTo({center: [31.685, 47.774], zoom: 5.5, bearing: 0, pitch: 45});
+                    // canvasElement.focus();
+                }
 	        },
 						  
 	        {
@@ -785,10 +800,15 @@ function resetRoute() {
         });
 
         let styles = [
-            'terrain', 'streets-v11', 'outdoors-v11', 'light-v10', 'dark-v10', 
-            'iarakistain/cl5guvut6006o14o1nl0ppe5u', 'iarakistain/cl5gil0ym006614o1gkrym5ke', 'dark-v10', 
-            'iarakistain/cl4x51czl004514oga1amzw1s'
+            'terrain', 
+            'iarakistain/cl5guvut6006o14o1nl0ppe5u', 
+            'iarakistain/cl5gil0ym006614o1gkrym5ke', 
+            'iarakistain/cl4x51czl004514oga1amzw1s',
             
+            'iarakistain/cl65j5le2000z14tipe3hsnuy', 
+            'iarakistain/cl65izeqo000x14ti16nbcx42', 
+            'iarakistain/cl65iqpnc003114n3awqprzvs',
+            'iarakistain/cl65i9s4g000q15oxdwsvktsv'
         ];
 
         for (const style of styles) {
