@@ -543,14 +543,12 @@ map.on('load', () => {
         
         // Copy coordinates array.
         const coordinates = e.features[0].geometry.coordinates.slice();
-        const description = `<div class="popup-content">
-            <p><strong>${e.features[0].properties.Direccion}</strong></p> 
+	const description = `<strong>${e.features[0].properties.Direccion}</strong>
             <p>${e.features[0].properties.Elemento}</p> 
-	   
-	   //<p>Elemento: ${e.features[0].properties['Elemento'] || ""}</p> 
-            //<p>Estado: ${e.features[0].properties['Estado'] || ""}</p>
-        </div>
-        `;
+            <p>Estado: ${e.features[0].properties.Estado}h</p>
+        `;    
+	    
+	 
         
         // Ensure that if the map is zoomed out such that multiple
         // copies of the feature are visible, the popup appears
