@@ -80,10 +80,10 @@
         
         
         <div id="map-styles-bg">
-            <div id="map-styles">   
-                <div id="iarakistain/cl5guvut6006o14o1nl0ppe5u"><span></span>Medios Accesibles</div> 
-                <div id="iarakistain/cl4x51czl004514oga1amzw1s" class="active"><span></span>Estado infraestructura</div> 
-		<div id="iarakistain/cl5gil0ym006614o1gkrym5ke"><span></span>Sensores Aire</div>
+            <div id="map-styles">
+                <div id="iarakistain/cl5guvut6006o14o1nl0ppe5u"><span></span>Medios Accesibles</div>
+                <div id="iarakistain/cl4x51czl004514oga1amzw1s" class="active"><span></span>Cardioprotección</div> 
+		        <div id="iarakistain/cl5gil0ym006614o1gkrym5ke"><span></span>Sensores Aire</div>
                 <div id="terrain" ><span></span>Terreno 3D</div>
                 <div id="iarakistain/cl65j5le2000z14tipe3hsnuy"><span></span>Calles</div>
                 <div id="iarakistain/cl65izeqo000x14ti16nbcx42"><span></span>Topográfico</div>
@@ -205,7 +205,7 @@
     mapboxgl.accessToken = 'pk.eyJ1IjoiaWFyYWtpc3RhaW4iLCJhIjoiY2t4NHBqNHd1MHRvaTJubnhodmxqdXhjbiJ9.T6OE8lXKHGCObadLCmIoqg';
     const map = new mapboxgl.Map({
         container: 'map',
-        style:'mapbox://styles/iarakistain/cl5guvut6006o14o1nl0ppe5u',
+        style:'mapbox://styles/iarakistain/cl4x51czl004514oga1amzw1s',
         center:[-2.505511, 43.186665],
         pitch:40,
         projection:'mercator',
@@ -213,7 +213,7 @@
         minZoom: 2,
         maxZoom: 18,
         hash: true,
-	preserveDrawingBuffer: true,
+	    preserveDrawingBuffer: true,
         language: 'es'
     });
           
@@ -319,14 +319,20 @@
           '<a href="#" class="next">Siguiente &raquo;</a>' +
           '</div>'
         '</div>';
+        
+        var popup = new mapboxgl.Popup({ offset: 25 }).setHTML(popupContent)
+        let markerInstance = new mapboxgl.Marker(el)
+          .setPopup(popup)
+          .setLngLat(marker.geometry.coordinates);
 
         // create the popup
-        var popup = new mapboxgl.Popup({ offset: 25 }).setHTML(popupContent)
+        el.onclick = function(e) {
+            e.stopPropagation();
+            markerInstance.togglePopup();
+        }
 
-        new mapboxgl.Marker(el)
-          .setLngLat(marker.geometry.coordinates)
-          .setPopup(popup)
-          .addTo(map);
+        markerInstance.addTo(map);
+
       })
     })
 
@@ -494,6 +500,19 @@ map.on('load', () => {
         }
     });
         
+        
+    // Add a layer showing the places.
+    // map.addLayer({
+    //     'id': 'places',
+    //     'type': 'circle',
+    //     'source': 'places',	
+    //     'paint': {
+    //         'circle-color': '#eb0e33',
+    //         'circle-radius': 6,
+    //         'circle-stroke-width': 0,
+    //         'circle-stroke-color': '#ffffff'
+    //     }
+    // });
     
     // Create a popup, but don't add it to the map yet.
     const popup = new mapboxgl.Popup({
@@ -501,37 +520,31 @@ map.on('load', () => {
         closeOnClick: false
     });
     
-	
-	 map.on('mouseenter', 'defibrilators', (e) => {
-        // Change the cursor style as a UI indicator.
-        map.getCanvas().style.cursor = 'pointer';
+    map.on('mouseenter', 'defibrilators', handleMouseEnter);
+    
+    // map.on('mouseenter', 'defibrilators', (e) => {
+    //     // Change the cursor style as a UI indicator.
+    //     map.getCanvas().style.cursor = 'pointer';
         
-        // Copy coordinates array.
-        const coordinates = e.features[0].geometry.coordinates.slice();
-        const description = `<strong>${e.features[0].properties.Organismo}</strong>
-            <p>${e.features[0].properties.Modelo}</p> 
-            <p>Horario: ${e.features[0].properties.Horario}h</p>
-        `;
-	
-	
-	// Ensure that if the map is zoomed out such that multiple
-        // copies of the feature are visible, the popup appears
-        // over the copy being pointed to.
-        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-        }
+    //     // Copy coordinates array.
+    //     const coordinates = e.features[0].geometry.coordinates.slice();
+    //     const description = `<strong>${e.features[0].properties.Organismo}</strong>
+    //         <p>${e.features[0].properties.Modelo}</p> 
+    //         <p>Horario: ${e.features[0].properties.Horario}h</p>`;
+
+    //     while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+    //         coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+    //     }
         
-        // Populate the popup and set its coordinates
-        // based on the feature found.
-        popup.setLngLat(coordinates).setHTML(description).addTo(map);
-    });
+    //     popup.setLngLat(coordinates).setHTML(description).addTo(map);
+    // });
     
     map.on('mouseleave', 'defibrilators', () => {
         map.getCanvas().style.cursor = '';
             popup.remove();
-    });	 
+    });
 
-    // escalator and elevators 
+    // escalator and elevetors 
     map.on('mouseenter', 'ascensores', handleMouseEnter);
     map.on('mouseenter', 'rampas', handleMouseEnter);
 
@@ -541,14 +554,17 @@ map.on('load', () => {
     function handleMouseEnter(e) {
         map.getCanvas().style.cursor = 'pointer';
         
+        console.log(e.features[0]);
+        
         // Copy coordinates array.
         const coordinates = e.features[0].geometry.coordinates.slice();
-	const description = `<strong>${e.features[0].properties.Direccion}</strong>
-            <p>${e.features[0].properties.Elemento}</p> 
-            <p>Horario:${e.features[0].properties.Horario}</p>
-        `;    
-	    
-	 
+        const description = `<div class="popup-content">
+            <p>Direccion: ${e.features[0].properties.Direccion}</p> 
+            <p>ELemento: ${e.features[0].properties['Elemento'] || ""}</p> 
+            <p>Estado: ${e.features[0].properties['Estado'] || ""}</p>
+        </div>
+        `;
+        
         // Ensure that if the map is zoomed out such that multiple
         // copies of the feature are visible, the popup appears
         // over the copy being pointed to.
