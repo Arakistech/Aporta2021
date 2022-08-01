@@ -68,8 +68,6 @@
     					}) : '';
 	  			</script>
 			
-		
-		    
                     <img src="aire.jpg" alt="Italian Trulli">
                     <div id="legend" class="hidden"></div>
                      <div class="sidebar-toggle rounded-rect left" onclick="toggleSidebar('left')" >&rarr; 
@@ -83,7 +81,7 @@
             <div id="map-styles">
                 <div id="iarakistain/cl5guvut6006o14o1nl0ppe5u"><span></span>Medios Accesibles</div>
                 <div id="iarakistain/cl4x51czl004514oga1amzw1s" class="active"><span></span>Cardioprotección</div> 
-		        <div id="iarakistain/cl5gil0ym006614o1gkrym5ke"><span></span>Sensores Aire</div>
+		<div id="iarakistain/cl5gil0ym006614o1gkrym5ke"><span></span>Sensores Aire</div>
                 <div id="terrain" ><span></span>Terreno 3D</div>
                 <div id="iarakistain/cl65j5le2000z14tipe3hsnuy"><span></span>Calles</div>
                 <div id="iarakistain/cl65izeqo000x14ti16nbcx42"><span></span>Topográfico</div>
@@ -156,11 +154,9 @@
                 button.title = title;
                 button.setAttribute('aria-label', title);
                 button.onclick = eventHandler;
-
                 icon.className = 'mapboxgl-ctrl-icon';
                 icon.setAttribute('aria-hidden', true);
                 button.appendChild(icon);
-
                 me._container.appendChild(button);
 
                 return button;
@@ -500,19 +496,6 @@ map.on('load', () => {
         }
     });
         
-        
-    // Add a layer showing the places.
-    // map.addLayer({
-    //     'id': 'places',
-    //     'type': 'circle',
-    //     'source': 'places',	
-    //     'paint': {
-    //         'circle-color': '#eb0e33',
-    //         'circle-radius': 6,
-    //         'circle-stroke-width': 0,
-    //         'circle-stroke-color': '#ffffff'
-    //     }
-    // });
     
     // Create a popup, but don't add it to the map yet.
     const popup = new mapboxgl.Popup({
@@ -522,22 +505,22 @@ map.on('load', () => {
     
     map.on('mouseenter', 'defibrilators', handleMouseEnter);
     
-    // map.on('mouseenter', 'defibrilators', (e) => {
-    //     // Change the cursor style as a UI indicator.
-    //     map.getCanvas().style.cursor = 'pointer';
+     map.on('mouseenter', 'defibrilators', (e) => {
+         // Change the cursor style as a UI indicator.
+         map.getCanvas().style.cursor = 'pointer';
         
-    //     // Copy coordinates array.
-    //     const coordinates = e.features[0].geometry.coordinates.slice();
-    //     const description = `<strong>${e.features[0].properties.Organismo}</strong>
-    //         <p>${e.features[0].properties.Modelo}</p> 
-    //         <p>Horario: ${e.features[0].properties.Horario}h</p>`;
+         // Copy coordinates array.
+         const coordinates = e.features[0].geometry.coordinates.slice();
+         const description = `<strong>${e.features[0].properties.Organismo}</strong>
+             <p>${e.features[0].properties.Modelo}</p> 
+             <p>Horario: ${e.features[0].properties.Horario}h</p>`;
 
-    //     while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-    //         coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-    //     }
+         while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+             coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+         }
         
-    //     popup.setLngLat(coordinates).setHTML(description).addTo(map);
-    // });
+        popup.setLngLat(coordinates).setHTML(description).addTo(map);
+     });
     
     map.on('mouseleave', 'defibrilators', () => {
         map.getCanvas().style.cursor = '';
@@ -559,8 +542,8 @@ map.on('load', () => {
         // Copy coordinates array.
         const coordinates = e.features[0].geometry.coordinates.slice();
         const description = `<div class="popup-content">
-            <p>Direccion: ${e.features[0].properties.Direccion}</p> 
-            <p>ELemento: ${e.features[0].properties['Elemento'] || ""}</p> 
+            <p>Direccion: <strong>${e.features[0].properties.Direccion}</strong></p> 
+            <p>Elemento: ${e.features[0].properties['Elemento'] || ""}</p> 
             <p>Estado: ${e.features[0].properties['Estado'] || ""}</p>
         </div>
         `;
@@ -747,21 +730,21 @@ function resetRoute() {
         map.addControl(new MapboxGLButtonControl([
             {
                 className: 'mapboxgl-ctrl-map',
-                title: 'Map Style',
+                title: 'Estilo del mapa',
                 eventHandler() {
                     mapStyleBg.style.display = 'block';
                 }
             }, 
             {
                 className: 'mapboxgl-ctrl-rain',
-                title: 'Rain Color and Mesh Opacity',
+                title: 'Opacidad color de lluvia',
                 eventHandler() {
                     rainBg.style.display = 'block';
                 }
             }, 
             {
                 className: 'mapboxgl-ctrl-defibrilators',
-                title: 'Toggle defibrilators',
+                title: 'Desfibriladores',
                 eventHandler() {
                     showDefibrilators = !showDefibrilators;
                     let visibilityStatus = showDefibrilators ? 'visible' : 'none';
@@ -772,7 +755,7 @@ function resetRoute() {
 		
 	        {
                 className: 'mapboxgl-ctrl-home',
-                title: 'Fly to home position',
+                title: 'Cámaras',
                 eventHandler() {
                     console.log("")
                     showMarkers = !showMarkers;
@@ -786,17 +769,13 @@ function resetRoute() {
                         }
                     });
 
-                // window.open('https://ermuaiot.com/mapboxrain_copia/docs/livecams/#16.18/43.187431/-2.503212/-43.5/52', "_blank");
-                    // deselectMarker();
-                    // cameraListElement.style.display = 'none';
-                    // map.flyTo({center: [31.685, 47.774], zoom: 5.5, bearing: 0, pitch: 45});
-                    // canvasElement.focus();
-                }
+                
+                	}
 	        },
 						  
 	        {
                 className: 'mapboxgl-ctrl-info',
-                title: 'About Mapbox GL JS Rain Layer',
+                title: 'Info',
                 eventHandler() {
                     infoBg.style.display = 'block';
                 }
@@ -812,7 +791,6 @@ function resetRoute() {
             'iarakistain/cl5guvut6006o14o1nl0ppe5u', 
             'iarakistain/cl5gil0ym006614o1gkrym5ke', 
             'iarakistain/cl4x51czl004514oga1amzw1s',
-            
             'iarakistain/cl65j5le2000z14tipe3hsnuy', 
             'iarakistain/cl65izeqo000x14ti16nbcx42', 
             'iarakistain/cl65iqpnc003114n3awqprzvs',
