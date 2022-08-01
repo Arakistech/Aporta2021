@@ -543,7 +543,7 @@ map.on('load', () => {
         const coordinates = e.features[0].geometry.coordinates.slice();
         const description = `<div class="popup-content">
             <p><strong>${e.features[0].properties.Direccion}</strong></p> 
-            <p>Elemento: ${e.features[0].properties['Elemento accesibilidad 24h'] || ""}</p> 
+            <p>Elemento accesibilidad 24h: ${e.features[0].properties['Elemento'] || ""}</p> 
         </div>
         `;
         
