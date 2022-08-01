@@ -79,7 +79,8 @@
         
         <div id="map-styles-bg">
             <div id="map-styles">
-                <div id="iarakistain/cl5guvut6006o14o1nl0ppe5u"><span></span>Medios Accesibles</div>
+                //<div id="iarakistain/cl5guvut6006o14o1nl0ppe5u"><span></span>Medios Accesibles</div>
+		<div id="iarakistain/cl4x51czl004514oga1amzw1s"><span></span>Medios Accesibles</div>
                 <div id="iarakistain/cl4x51czl004514oga1amzw1s" class="active"><span></span>Cardioprotección</div> 
 		<div id="iarakistain/cl5gil0ym006614o1gkrym5ke"><span></span>Sensores Aire</div>
                 <div id="terrain" ><span></span>Terreno 3D</div>
@@ -201,7 +202,8 @@
     mapboxgl.accessToken = 'pk.eyJ1IjoiaWFyYWtpc3RhaW4iLCJhIjoiY2t4NHBqNHd1MHRvaTJubnhodmxqdXhjbiJ9.T6OE8lXKHGCObadLCmIoqg';
     const map = new mapboxgl.Map({
         container: 'map',
-        style:'mapbox://styles/iarakistain/cl4x51czl004514oga1amzw1s',
+	style:'mapbox://styles/iarakistain/cl5guvut6006o14o1nl0ppe5u',
+       // style:'mapbox://styles/iarakistain/cl4x51czl004514oga1amzw1s',
         center:[-2.505511, 43.186665],
         pitch:40,
         projection:'mercator',
@@ -670,11 +672,11 @@ const directions = new MapboxDirections({
         unit: 'metric',
         profile: 'mapbox/walking',
         alternatives: true,
-	    container: 'map', // container id	
+	container: 'map', // container id	
         geometries: 'geojson',
         controls: { instructions: true },
         flyTo: true,
-	    preserveDrawingBuffer: true,	
+        preserveDrawingBuffer: true,	
         language: 'es'
 });
 
@@ -725,7 +727,7 @@ function resetRoute() {
 
     map.scrollZoom.enable();
     map.addControl(new mapboxgl.NavigationControl());
-	map.addControl(new MapboxTraffic());
+    map.addControl(new MapboxTraffic());
     map.addControl(new mapboxgl.FullscreenControl({container: root}));
         map.addControl(new MapboxGLButtonControl([
             {
