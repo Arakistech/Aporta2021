@@ -6,27 +6,7 @@ html, body {
     font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
 }
 
-#wrap {
-        width: 500px;
-        height: 6000px;
-        padding: 0;
-        overflow: hidden;
-      }
-#scaled-frame {
-  zoom: 0.75;
-  -moz-transform: scale(0.85);
-  -moz-transform-origin: 0 0;
-  -o-transform: scale(0.85);
-  -o-transform-origin: 0 0;
-  -webkit-transform: scale(0.85);
-  -webkit-transform-origin: 0 0;
-}
 
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-  #scaled-frame {
-    zoom: 1;
-  }
-}
 
 #map {
     position: absolute;
