@@ -6,8 +6,6 @@ html, body {
     font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
 }
 
-
-
 #map {
     position: absolute;
     top: 0;
@@ -16,20 +14,6 @@ html, body {
     height: 100%;
 }
 
-#fly {
-        display: block;
-        position: relative;
-        margin: 0px auto;
-        width: 6%;
-        height: 40px;
-        padding: 10px;
-        border: none;
-        border-radius: 3px;
-        font-size: 12px;
-        text-align: center;
-        color: #0d0d00;
-        background: #fafaf7;
-    }
 
 #downloadLink {
     font-size: 12px;    
@@ -212,7 +196,7 @@ html, body {
 }
 
 .mapboxgl-ctrl button.mapboxgl-ctrl-world .mapboxgl-ctrl-icon {
-     background: no-repeat center/22px url("assets/images/world.png");
+     background: no-repeat center/25px url("assets/images/world.png");
 }
 
 
