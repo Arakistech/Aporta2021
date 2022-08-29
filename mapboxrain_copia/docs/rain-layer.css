@@ -196,7 +196,7 @@ html, body {
 }
 
 .mapboxgl-ctrl button.mapboxgl-ctrl-world .mapboxgl-ctrl-icon {
-     background: no-repeat center/25px url("assets/images/world.png");
+     background: no-repeat center/30px url("assets/images/world.png");
 }
 
 
