@@ -509,6 +509,21 @@ map.on('load', () => {
         closeOnClick: false
     });
     
+	
+	
+	//Globo
+   document.getElementById('fly').addEventListener('click', () => {
+        // Fly to a random location
+        map.flyTo({
+            center: [-2, 43], zoom: 2.5,
+            essential: true // this animation is considered essential with respect to prefers-reduced-motion
+        });
+    });
+	
+	
+	
+	
+	
     map.on('mouseenter', 'defibrilators', handleMouseEnter);
     
      map.on('mouseenter', 'defibrilators', (e) => {
