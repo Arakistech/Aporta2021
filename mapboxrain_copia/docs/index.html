@@ -765,7 +765,10 @@ function resetRoute() {
                 title: 'Mundo', 
 			 
 		 eventHandler() {
-                    
+                    map.flyTo({
+            center: [-2, 43], zoom: 2.5,
+            essential: true // this animation is considered essential with respect to prefers-reduced-motion
+        });
                 		}
                 
             },
