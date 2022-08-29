@@ -510,20 +510,6 @@ map.on('load', () => {
     });
     
 	
-	
-	//Globo
-   document.getElementById('fly').addEventListener('click', () => {
-        // Fly to a random location
-        map.flyTo({
-            center: [-2, 42.34], zoom: 2.5, pitch: -1.4
-            essential: true // this animation is considered essential with respect to prefers-reduced-motion
-        });
-    });
-	
-	
-	
-	
-	
     map.on('mouseenter', 'defibrilators', handleMouseEnter);
     
      map.on('mouseenter', 'defibrilators', (e) => {
@@ -937,6 +923,19 @@ function addDefibrilators() {
     });
 }
    
+	    
+	    
+//Globo
+   document.getElementById('fly').addEventListener('click', () => {
+        // Fly to a random location
+        map.flyTo({
+            center: [-3.74, 48.59], zoom: 2.5, pitch: -1.4, yaw: 25
+            essential: true // this animation is considered essential with respect to prefers-reduced-motion
+        });
+    });	    
+	    
+	    
+	    
 
 rainBg.addEventListener('click', () => {
     rainPickr.applyColor();
