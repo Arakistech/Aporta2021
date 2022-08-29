@@ -79,7 +79,7 @@
                 </div>
             </div>
         
-        <button id="fly">Mundo</button> 
+   
 	    
 	    
         <div id="map-styles-bg">
@@ -924,19 +924,6 @@ function addDefibrilators() {
 }
    
 	    
-	    
-//Globo
-   document.getElementById('fly').addEventListener('click', () => {
-        // Fly to a random location
-        map.flyTo({
-            center: [-3.74, 48.59], zoom: 2.5, pitch: -1.4
-            essential: true // this animation is considered essential with respect to prefers-reduced-motion
-        });
-    });	    
-	    
-	    
-	    
-
 rainBg.addEventListener('click', () => {
     rainPickr.applyColor();
     snowPickr.applyColor();
